@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>D&amp;D Arena — Game Overview</title>
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --ink-soft: #15151c;
+    --paper: #f7f3ec;
+    --paper-soft: #efe8db;
+    --amber: #d4a847;
+    --amber-deep: #a87a1f;
+    --violet: #7a4ea5;
+    --violet-soft: #b39bd1;
+    --rule: rgba(212, 168, 71, 0.45);
+    --body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --display: 'Cinzel', 'Trajan Pro', 'Palatino Linotype', Georgia, serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--body);
+    line-height: 1.55;
+    background: var(--ink);
+    color: #e8e4dc;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 56px 64px 56px 64px;
+    background: var(--ink);
+  }
+
+  .header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 22px;
+    margin-bottom: 28px;
+  }
+
+  .eyebrow {
+    font-family: var(--body);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 10px 0;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: 34px;
+    line-height: 1.15;
+    margin: 0 0 6px 0;
+    color: #f5e9c8;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: rgba(232, 228, 220, 0.78);
+    margin: 0;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 32px 0 10px 0;
+    font-weight: 600;
+  }
+
+  h2 .num {
+    color: rgba(212, 168, 71, 0.55);
+    margin-right: 10px;
+    font-weight: 400;
+  }
+
+  p { margin: 0 0 12px 0; font-size: 14px; }
+
+  ul, ol {
+    margin: 0 0 14px 0;
+    padding-left: 22px;
+  }
+
+  li {
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  strong { color: #f5e9c8; font-weight: 600; }
+
+  .lede {
+    font-size: 15.5px;
+    color: #efe9da;
+    border-left: 2px solid var(--amber);
+    padding: 4px 0 4px 16px;
+    margin: 0 0 22px 0;
+  }
+
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 8px 0 14px 0;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 28px 110px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    padding: 10px 14px;
+    background: rgba(122, 78, 165, 0.10);
+    border: 1px solid rgba(122, 78, 165, 0.28);
+    border-radius: 6px;
+  }
+
+  .flow-row .step {
+    font-family: var(--display);
+    color: var(--amber);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .flow-row .label {
+    font-family: var(--body);
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    font-size: 11px;
+    color: var(--violet-soft);
+  }
+
+  .flow-row .body { font-size: 13.5px; color: #e6e0d0; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 8px 0 14px 0;
+  }
+
+  .stat {
+    background: rgba(212, 168, 71, 0.08);
+    border: 1px solid rgba(212, 168, 71, 0.30);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+
+  .stat .num {
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--amber);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat .lbl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: rgba(232, 228, 220, 0.72);
+  }
+
+  .footer {
+    margin-top: 38px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(232, 228, 220, 0.55);
+  }
+
+  .footer .url {
+    color: var(--amber);
+    letter-spacing: 0.08em;
+  }
+
+  .pull {
+    font-family: var(--display);
+    font-size: 17px;
+    color: #f5e9c8;
+    font-style: italic;
+    margin: 14px 0 18px 0;
+    padding: 0 0 0 16px;
+    border-left: 2px solid var(--violet);
+  }
+
+  /* Print: light-on-light for clean PDF / handout */
+  @media print {
+    @page { size: letter; margin: 0.5in; }
+
+    html, body, .page {
+      background: var(--paper);
+      color: #1f1a14;
+    }
+    h1 { color: #1f1a14; }
+    .subtitle { color: #4a4337; }
+    h2 { color: var(--amber-deep); }
+    h2 .num { color: rgba(168, 122, 31, 0.5); }
+    .lede { color: #1f1a14; border-left-color: var(--amber-deep); }
+    .pull { color: #1f1a14; border-left-color: #563f74; }
+    strong { color: #1f1a14; }
+    .eyebrow { color: var(--amber-deep); }
+
+    .flow-row {
+      background: rgba(122, 78, 165, 0.08);
+      border-color: rgba(86, 63, 116, 0.40);
+    }
+    .flow-row .label { color: #563f74; }
+    .flow-row .body { color: #1f1a14; }
+    .flow-row .step { color: var(--amber-deep); }
+
+    .stat {
+      background: rgba(168, 122, 31, 0.08);
+      border-color: rgba(168, 122, 31, 0.45);
+    }
+    .stat .num { color: var(--amber-deep); }
+    .stat .lbl { color: #4a4337; }
+
+    .footer { color: #4a4337; border-top-color: rgba(168, 122, 31, 0.5); }
+    .footer .url { color: var(--amber-deep); }
+
+    .header { border-bottom-color: rgba(168, 122, 31, 0.5); }
+    .page { padding: 0; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <p class="eyebrow">D&amp;D Arena · One-Pager 1 of 3</p>
+    <h1>The Game, At A Glance</h1>
+    <p class="subtitle">3v3 PvP D&amp;D 5e. Pre-built characters, locked rules, two-hour matches. Drop-in friendly.</p>
+  </header>
+
+  <p class="lede">D&amp;D Arena strips a normal D&amp;D session down to the part that's fun in 90 seconds — pick your team, prep in town, fight in the arena, see who's still standing. No campaign, no character creation, no half-hour rules debates. A first-timer and a 20-year DM can sit at the same table and both have a good time.</p>
+
+  <h2><span class="num">01</span>The Two-Phase Loop</h2>
+  <p>Every match runs the same shape. Two phases, in order, every time:</p>
+
+  <div class="flow-grid">
+    <div class="flow-row">
+      <span class="step">①</span>
+      <span class="label">The Town</span>
+      <span class="body">Prep. Your team has 60 minutes and 500 gp pooled to spend across six town locations — shop, train, gamble, research, deal with the black market, hunt the hidden catacombs. Decide what your team needs before the fight starts.</span>
+    </div>
+    <div class="flow-row">
+      <span class="step">②</span>
+      <span class="label">The Arena</span>
+      <span class="body">Fight. Both teams place their three characters on a battle map and roll initiative. 90-second turns, ten-round cap. Whoever drops the other team first, wins.</span>
+    </div>
+  </div>
+
+  <p style="font-size: 13px; color: rgba(232, 228, 220, 0.7); margin-top: -2px;">Each phase has its own one-pager (this is #1; #2 is The Town; #3 is The Arena).</p>
+
+  <h2><span class="num">02</span>What Winning Looks Like</h2>
+  <p><strong>Team Deathmatch.</strong> One win condition, no draft, no special objectives. The first team to drop all three opposing characters takes the match. "Dropped" means at 0 HP and unconscious — same as standard 5e (three failed death saves and you're out).</p>
+  <p>If neither team is wiped by the end of round 10, every character drops to 1 HP for a sudden-death round 11. Tied after that → the match is a draw.</p>
+
+  <h2><span class="num">03</span>How Picking Works</h2>
+  <p>You don't build a character. You pick one off the roster.</p>
+  <ul>
+    <li><strong>The roster:</strong> 12 pre-built characters, one per PHB class — Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard. All Level 3, balance-tuned for the format.</li>
+    <li><strong>Blind pick:</strong> Each team privately picks 3 characters. Both teams reveal at the same time. <strong>Mirrors are allowed</strong> — both teams can show up with the same Fighter and that's fine.</li>
+    <li><strong>No build time, no system mastery tax:</strong> sit down, pick three names, you're playing.</li>
+  </ul>
+
+  <h2><span class="num">04</span>The Rules Tweaks You Should Know</h2>
+  <p>The format is 5e — but five things are tuned for tournament play. These apply to <em>every</em> character on the roster:</p>
+  <ul>
+    <li><strong>Level 3,</strong> Point Buy 27, no multiclassing, no magic items at the start.</li>
+    <li><strong>+10 HP buffer</strong> on top of base — keeps fights from ending on a single unlucky crit.</li>
+    <li><strong>No Extra Attack</strong> at this level (Level 3 RAW). Casters and burst classes are relatively stronger.</li>
+    <li><strong>Sleep is banned.</strong> 5d8 against Level 3 HP totals = team-wipe risk.</li>
+    <li><strong>Sharpshooter / Great Weapon Master:</strong> -3 to hit / +6 damage (not -5 / +10).</li>
+  </ul>
+  <p style="font-size: 13px; color: rgba(232, 228, 220, 0.7);">Full variant doc: <code style="background: rgba(212,168,71,0.10); padding: 2px 5px; border-radius: 3px; font-size: 12px;">rules-variant-level-3.md</code> in the Discord.</p>
+
+  <h2><span class="num">05</span>The Numbers</h2>
+  <div class="stat-row">
+    <div class="stat"><div class="num">3v3</div><div class="lbl">Teams</div></div>
+    <div class="stat"><div class="num">Lvl 3</div><div class="lbl">All characters</div></div>
+    <div class="stat"><div class="num">12</div><div class="lbl">Pre-built picks</div></div>
+    <div class="stat"><div class="num">60 min</div><div class="lbl">Town phase</div></div>
+    <div class="stat"><div class="num">10 rds</div><div class="lbl">Arena cap</div></div>
+    <div class="stat"><div class="num">2–3 hr</div><div class="lbl">Whole match</div></div>
+  </div>
+
+  <p class="pull">"Like a quick chess match — but with fireballs."</p>
+
+  <footer class="footer">
+    <span>D&amp;D Arena · Playtest v1</span>
+    <span class="url">dnd-arena.commonquest.io</span>
+  </footer>
+
+</div>
+</body>
+</html>
