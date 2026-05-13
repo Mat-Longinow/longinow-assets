@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D&D Arena — Rook Ashfall, Variant Human Ranger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #0a0a0f;
+    color: #f8f7f2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body { width: 8.5in; min-height: 11in; position: relative; }
+
+  /* HERO STRIP */
+  .hero {
+    position: relative;
+    height: 2.6in;
+    width: 100%;
+    background-image: url('../../characters/ranger.png');
+    background-size: cover;
+    background-position: center 25%;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,15,0.55) 0%, transparent 30%, transparent 45%, rgba(10,10,15,0.95) 88%, rgba(10,10,15,1) 100%),
+      linear-gradient(to right, rgba(10,10,15,0.85) 0%, transparent 35%);
+  }
+  .hero-text {
+    position: absolute;
+    left: 0.5in;
+    right: 0.5in;
+    bottom: 0.25in;
+    z-index: 3;
+  }
+  .eyebrow {
+    color: #fbbf24;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 6pt;
+  }
+  .title {
+    color: white;
+    font-size: 32pt;
+    font-weight: 800;
+    letter-spacing: -0.022em;
+    line-height: 0.95;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.75);
+    text-transform: uppercase;
+  }
+  .subtitle {
+    color: rgba(255,255,255,0.78);
+    font-size: 10pt;
+    font-style: italic;
+    margin-top: 7pt;
+    max-width: 5.5in;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 0.22in 0.5in 0.3in;
+    position: relative;
+  }
+  .content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 35% at 85% 30%, rgba(251,191,36,0.05), transparent 60%),
+      radial-gradient(ellipse 45% 30% at 15% 100%, rgba(245,158,11,0.04), transparent 60%);
+    pointer-events: none;
+  }
+  .content > * { position: relative; }
+
+  h2 {
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    margin: 14pt 0 7pt;
+  }
+  h2:first-of-type { margin-top: 4pt; }
+
+  /* VITAL STATS ROW */
+  .vitals {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6pt;
+    margin-bottom: 4pt;
+  }
+  .vital {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 4pt;
+    padding: 6pt 8pt;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .vital::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #f59e0b, #92400e);
+  }
+  .vital .l {
+    color: #fbbf24;
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 2pt;
+  }
+  .vital .v {
+    color: white;
+    font-size: 14pt;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  /* ABILITY SCORES */
+  .abilities {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6pt;
+  }
+  .ab {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 4pt;
+    padding: 5pt 4pt;
+    text-align: center;
+  }
+  .ab .l {
+    color: rgba(255,255,255,0.55);
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .ab .v {
+    color: white;
+    font-size: 13pt;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .ab .m {
+    color: #fbbf24;
+    font-size: 8.5pt;
+    font-weight: 700;
+  }
+
+  /* TWO COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18pt;
+    margin-top: 4pt;
+  }
+
+  .feat {
+    margin-bottom: 7pt;
+  }
+  .feat-name {
+    color: white;
+    font-size: 9pt;
+    font-weight: 700;
+    margin-bottom: 1pt;
+  }
+  .feat-desc {
+    font-size: 8.5pt;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.78);
+  }
+  .feat-desc em { color: rgba(255,255,255,0.55); }
+
+  /* SIGNATURE MOVES */
+  .moves {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6pt;
+  }
+  .move {
+    padding: 7pt 10pt 7pt 28pt;
+    background: rgba(245,158,11,0.05);
+    border: 1px solid rgba(245,158,11,0.18);
+    border-radius: 4pt;
+    position: relative;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.85);
+  }
+  .move .num {
+    position: absolute;
+    left: 9pt;
+    top: 7pt;
+    color: #fbbf24;
+    font-size: 12pt;
+    font-weight: 800;
+  }
+  .move .label {
+    color: #fbbf24;
+    font-weight: 700;
+    margin-right: 3pt;
+  }
+
+  /* ACTION ECONOMY TABLE */
+  .econ {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+  }
+  .econ td {
+    padding: 4pt 8pt;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    vertical-align: top;
+  }
+  .econ td:first-child {
+    color: #fbbf24;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    width: 1.2in;
+    white-space: nowrap;
+  }
+  .econ td:last-child {
+    color: rgba(255,255,255,0.85);
+  }
+  .econ tr:last-child td { border-bottom: none; }
+
+  .equip {
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.78);
+  }
+  .equip strong { color: white; font-weight: 700; }
+
+  .dmg-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6pt;
+  }
+  .dmg {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 4pt;
+    padding: 6pt 9pt;
+  }
+  .dmg .l {
+    color: #fbbf24;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2pt;
+  }
+  .dmg .v {
+    color: white;
+    font-size: 11pt;
+    font-weight: 700;
+  }
+  .dmg .v small {
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    font-size: 8pt;
+  }
+
+  /* DIVINE/PRIMAL TRACKERS — gold tint for the half-caster Hunter.
+     Same family as Cleric / Druid / Paladin; distinct from violet
+     arcane and martial-steel monk/fighter. Tracks L1 spell slots,
+     the Hunter's Mark concentration anchor, and the Goodberry HP
+     pool. */
+  .slots {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10pt;
+    align-items: center;
+    padding: 6pt 10pt;
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.22);
+    border-radius: 4pt;
+    margin-bottom: 6pt;
+  }
+  .slots .tier {
+    color: #fcd34d;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .slots .circles {
+    display: flex;
+    gap: 5pt;
+    flex-wrap: wrap;
+  }
+  .slots .circle {
+    width: 11pt;
+    height: 11pt;
+    border-radius: 50%;
+    border: 1.5px solid #fcd34d;
+    background: transparent;
+  }
+  .slots .circle.sm {
+    width: 8pt;
+    height: 8pt;
+    border-width: 1.2px;
+  }
+
+  .spell-list {
+    font-size: 8.5pt;
+    line-height: 1.42;
+    color: rgba(255,255,255,0.82);
+    margin-top: 4pt;
+  }
+  .spell-list .spell {
+    margin-bottom: 4pt;
+  }
+  .spell-list strong { color: white; font-weight: 700; }
+  .spell-list em { color: rgba(255,255,255,0.55); }
+
+  .footer {
+    margin-top: 12pt;
+    font-size: 6.5pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.32);
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 8pt;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">D&D Arena · Hunter · Colossus Slayer · LVL 3</div>
+    <h1 class="title">Rook Ashfall</h1>
+    <p class="subtitle">Variant Human Ranger &mdash; <em>"Counts arrows, not kills. The arrow knows where it needs to land &mdash; he just lets it go."</em></p>
+  </div>
+</section>
+
+<section class="content">
+
+  <h2>Vitals</h2>
+  <div class="vitals">
+    <div class="vital"><div class="l">HP</div><div class="v">34</div></div>
+    <div class="vital"><div class="l">AC</div><div class="v">15</div></div>
+    <div class="vital"><div class="l">Speed</div><div class="v">30</div></div>
+    <div class="vital"><div class="l">Init</div><div class="v">+3</div></div>
+    <div class="vital"><div class="l">Prof</div><div class="v">+2</div></div>
+    <div class="vital"><div class="l">Hit Dice</div><div class="v">3d10</div></div>
+  </div>
+
+  <h2>Ability Scores</h2>
+  <div class="abilities">
+    <div class="ab"><div class="l">STR</div><div class="v">10</div><div class="m">+0</div></div>
+    <div class="ab"><div class="l">DEX</div><div class="v">16</div><div class="m">+3</div></div>
+    <div class="ab"><div class="l">CON</div><div class="v">14</div><div class="m">+2</div></div>
+    <div class="ab"><div class="l">INT</div><div class="v">10</div><div class="m">+0</div></div>
+    <div class="ab"><div class="l">WIS</div><div class="v">15</div><div class="m">+2</div></div>
+    <div class="ab"><div class="l">CHA</div><div class="v">10</div><div class="m">+0</div></div>
+  </div>
+
+  <h2>Hunter Trackers <span style="color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.1em;">&middot; dry-erase on laminate</span></h2>
+  <div class="slots">
+    <span class="tier">Level 1 Slots</span>
+    <div class="circles">
+      <span class="circle"></span><span class="circle"></span><span class="circle"></span>
+    </div>
+    <span class="tier">Hunter's Mark &middot; conc.</span>
+    <div class="circles">
+      <span class="circle"></span>
+    </div>
+    <span class="tier">Goodberry &middot; 10 HP pool</span>
+    <div class="circles">
+      <span class="circle sm"></span><span class="circle sm"></span><span class="circle sm"></span><span class="circle sm"></span><span class="circle sm"></span>
+      <span class="circle sm"></span><span class="circle sm"></span><span class="circle sm"></span><span class="circle sm"></span><span class="circle sm"></span>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h2>Class &amp; Race Features</h2>
+
+      <div class="feat">
+        <div class="feat-name">Hunter's Mark <span style="color: rgba(255,255,255,0.5); font-weight: 400;">(bonus, L1 slot, conc. 1 min)</span></div>
+        <div class="feat-desc">Mark a target within 90 ft. <strong>+1d6 damage on every weapon hit</strong> against it, advantage on Survival/Perception to track. <strong>Re-target as a bonus action for free</strong> if the marked target drops. <em>Always up.</em></div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Colossus Slayer <span style="color: rgba(255,255,255,0.5); font-weight: 400;">(Hunter, once per turn)</span></div>
+        <div class="feat-desc">On a hit against a creature <strong>below max HP</strong>, add <strong>+1d8 damage</strong>. Triggers from round 2 onward, or any pre-damaged target. Stacks with Hunter's Mark.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Fighting Style &mdash; Archery</div>
+        <div class="feat-desc"><strong>+2 to attack rolls</strong> with ranged weapons. Already baked into the +4 / +7 to-hit numbers below.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Sharpshooter <span style="color: rgba(255,255,255,0.5); font-weight: 400;">(variant -3/+6)</span></div>
+        <div class="feat-desc"><strong>Power Shot:</strong> &minus;3 to hit, <strong>+6 damage</strong>. <strong>Ignore long-range disadvantage</strong> (Longbow effective 600 ft). <strong>Ignore half &amp; three-quarters cover.</strong></div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Favored Enemy &mdash; Humans &amp; Orcs</div>
+        <div class="feat-desc">Advantage on INT checks to track, WIS checks to recall info. <em>Flavor in PvP; matters only on humanoid map encounters.</em></div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Natural Explorer &mdash; Forest</div>
+        <div class="feat-desc">Double proficiency on INT/WIS checks tied to forest terrain; travel + foraging bonuses. <em>Map-dependent.</em></div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Primeval Awareness <span style="color: rgba(255,255,255,0.5); font-weight: 400;">(action, 1 slot)</span></div>
+        <div class="feat-desc">Sense favored creature types within <strong>1 mi</strong> (6 mi in forest). Scout utility, not combat.</div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Signature Moves</h2>
+      <div class="moves">
+        <div class="move">
+          <span class="num">1</span>
+          <span class="label">Mark and Snipe.</span>
+          T1 bonus: <strong>Hunter's Mark</strong> on priority target. Action: Longbow <strong>-3/+6 Sharpshooter</strong> at <strong>+4 to hit</strong>. Round 2+: hit lands while target is wounded &rarr; <strong>Colossus Slayer +1d8</strong> auto-stacks. Damage: 1d8 + 3 DEX + 6 Sharp + 1d6 HM + 1d8 CS &asymp; <strong>~21.5 / hit</strong>. Repeats every turn for the full minute.
+        </div>
+        <div class="move">
+          <span class="num">2</span>
+          <span class="label">Pull and Kite.</span>
+          Shoot from max range; <strong>Sharpshooter ignores long-range disadv</strong>, so peel as far as needed. Hunter's Mark <strong>transfers free on a kill</strong> &mdash; never lose tempo. Anti-rush counter to Barbarian / Paladin / Fighter who need to close.
+        </div>
+        <div class="move">
+          <span class="num">3</span>
+          <span class="label">Drop Sharpshooter vs. Heavy Armor.</span>
+          Against Paladin (AC 16+) and Fighter (AC 18), <strong>drop -3/+6</strong> &mdash; the math swings against you. Take the flat <strong>+7 to hit, 1d8+3 +HM +CS &asymp; ~15.5</strong>. Reliable damage beats power damage when miss-rate spikes.
+        </div>
+      </div>
+
+      <h2>Damage Reference</h2>
+      <div class="dmg-row">
+        <div class="dmg">
+          <div class="l">Sharp + HM + CS</div>
+          <div class="v">~21.5 <small>@+4 to hit</small></div>
+        </div>
+        <div class="dmg">
+          <div class="l">Flat + HM + CS</div>
+          <div class="v">~15.5 <small>@+7 to hit</small></div>
+        </div>
+        <div class="dmg">
+          <div class="l">Crit (Sharp)</div>
+          <div class="v">~35 <small>doubles weapon dice</small></div>
+        </div>
+      </div>
+
+      <h2>Saves &amp; Skills</h2>
+      <div class="equip">
+        <strong>Saves:</strong> STR +2, DEX +5<br>
+        <strong>Skills:</strong> Perception +4, Stealth +5, Survival +4, Nature +2, Athletics +2<br>
+        <strong>Senses:</strong> Passive Perception 14<br>
+        <strong>Languages:</strong> Common + 1 (Variant Human bonus)<br>
+        <strong>Spell Save DC:</strong> 12 &middot; <strong>Spell Attack:</strong> +4
+      </div>
+    </div>
+  </div>
+
+  <h2>Spells Known <span style="color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.1em;">&middot; DC 12 &middot; +4 attack &middot; WIS</span></h2>
+  <div class="spell-list">
+    <div class="spell"><strong>L1 (3 known):</strong> Hunter's Mark (bonus, conc. 1 min &mdash; +1d6 per weapon hit, free re-target on kill) &middot; Cure Wounds (action, touch, 1d8+2 emergency heal) &middot; Goodberry (action, 10 berries &mdash; 1 HP each, prep in town phase, eat as object interaction in arena, <em>no concentration</em>)</div>
+    <div class="spell"><em>Concentration is one at a time &mdash; Hunter's Mark is the engine. If broken, re-cast immediately next bonus action; do not let it lapse.</em></div>
+  </div>
+
+  <h2>Action Economy</h2>
+  <table class="econ">
+    <tr><td>Action</td><td>Longbow (1d8 pierce 150/600, +4 w/ Sharp -3 or <strong>+7 flat</strong>) &middot; Shortsword melee (+5, 1d6+3) &middot; Cast Cure Wounds &middot; Cast Goodberry (town phase) &middot; Primeval Awareness &middot; Dash / Dodge / Hide</td></tr>
+    <tr><td>Bonus Action</td><td><strong>Hunter's Mark</strong> (cast or free re-target on kill) &middot; <strong>Off-hand Shortsword TWF</strong> (only if pulled into melee) &middot; Eat a Goodberry</td></tr>
+    <tr><td>Reaction</td><td>Opportunity Attack</td></tr>
+    <tr><td>Movement</td><td>30 ft &mdash; kite loop: shoot, fall back, shoot, fall back</td></tr>
+    <tr><td>Free</td><td>Object interaction &mdash; <strong>swap to shortswords</strong> if melee'd, or pop a Goodberry</td></tr>
+  </table>
+
+  <h2>Equipment</h2>
+  <div class="equip">
+    <strong>Longbow</strong> (1d8 pierce, ranged 150/600, two-handed, heavy) &middot; <strong>2x Shortsword</strong> (1d6 pierce, finesse, light &mdash; emergency melee TWF) &middot; <strong>Quiver + 20 Arrows</strong> &middot; <strong>Studded Leather</strong> (AC 12 + DEX) &middot; <strong>Explorer's Pack</strong> &middot; <em>a single black arrow with no fletching &mdash; kept but never drawn</em>
+  </div>
+
+  <div class="footer">
+    <span>D&D Arena · Arena Viva 2026</span>
+    <span>Character 08 / 12 · Ranger</span>
+  </div>
+
+</section>
+
+</body>
+</html>
