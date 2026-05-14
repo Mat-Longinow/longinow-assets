@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D&D Arena — Phase 2: The Arena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #0a0a0f;
+    color: #f8f7f2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 10pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body { width: 8.5in; min-height: 11in; position: relative; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 3.5in;
+    width: 100%;
+    background-image: url('../design/heroes/the-arena.png');
+    background-size: cover;
+    background-position: center 40%;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,15,0.4) 0%, transparent 30%, transparent 45%, rgba(10,10,15,0.92) 88%, rgba(10,10,15,1) 100%);
+  }
+  .hero-logo {
+    position: absolute;
+    bottom: 0.35in;
+    right: 0.55in;
+    height: 70pt;
+    width: auto;
+    z-index: 3;
+    filter: drop-shadow(0 4px 18px rgba(0,0,0,0.7));
+  }
+  .hero-text {
+    position: absolute;
+    left: 0.55in;
+    right: 0.55in;
+    bottom: 0.3in;
+    z-index: 3;
+  }
+  .eyebrow {
+    color: #fbbf24;
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 7pt;
+  }
+  .title {
+    color: white;
+    font-size: 42pt;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.75);
+    text-transform: uppercase;
+  }
+  .subtitle {
+    color: rgba(255,255,255,0.78);
+    font-size: 11pt;
+    font-weight: 400;
+    margin-top: 9pt;
+    max-width: 5.5in;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 0.3in 0.55in 0.4in;
+    position: relative;
+  }
+  .content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 35% at 85% 30%, rgba(220,38,38,0.05), transparent 60%),
+      radial-gradient(ellipse 45% 30% at 15% 100%, rgba(245,158,11,0.04), transparent 60%);
+    pointer-events: none;
+  }
+  .content > * { position: relative; }
+
+  .lede {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 20pt;
+  }
+  .lede strong { color: white; }
+
+  h2 {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    margin: 20pt 0 10pt;
+  }
+  h2:first-of-type { margin-top: 0; }
+
+  .rounds {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10pt;
+  }
+  .round {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 5pt;
+    padding: 10pt 12pt;
+    position: relative;
+    overflow: hidden;
+  }
+  .round::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #f59e0b, #92400e);
+  }
+  .round .num {
+    color: #fbbf24;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 2pt;
+  }
+  .round .name {
+    font-size: 13pt;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: white;
+    margin-bottom: 4pt;
+  }
+  .round .desc {
+    font-size: 9pt;
+    color: rgba(255,255,255,0.74);
+    line-height: 1.4;
+  }
+
+  .victory {
+    margin-top: 17pt;
+    padding: 10pt 14pt;
+    background: linear-gradient(135deg, rgba(220,38,38,0.1), rgba(245,158,11,0.06));
+    border: 1px solid rgba(220,38,38,0.32);
+    border-radius: 5pt;
+    position: relative;
+  }
+  .victory .l {
+    color: #f87171;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 3pt;
+  }
+  .victory p {
+    margin: 0;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.88);
+  }
+  .victory strong { color: white; font-weight: 700; }
+  .victory em { color: rgba(255,255,255,0.7); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10pt 22pt;
+  }
+
+  ul.tight {
+    list-style: none;
+    padding: 0;
+  }
+  ul.tight li {
+    padding: 3pt 0 3pt 13pt;
+    position: relative;
+    font-size: 9.5pt;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.82);
+  }
+  ul.tight li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7pt;
+    width: 4pt;
+    height: 4pt;
+    background: #f59e0b;
+    border-radius: 50%;
+  }
+  ul.tight li strong { color: white; font-weight: 600; }
+
+  .ref-note {
+    margin-top: 16pt;
+    padding: 7pt 12pt;
+    background: rgba(255,255,255,0.025);
+    border-left: 2px solid rgba(255,255,255,0.25);
+    font-size: 9pt;
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+    line-height: 1.45;
+  }
+
+  .footer {
+    margin-top: 14pt;
+    font-size: 7pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img class="hero-logo" src="../design/logos/logo_nobg_centered.png" alt="D&D Arena">
+  <div class="hero-text">
+    <h1 class="title">The Arena</h1>
+    <p class="subtitle">3v3 tactical combat. Last team standing wins.</p>
+  </div>
+</section>
+
+<section class="content">
+
+  <div class="lede">
+    Two teams of three are placed <strong>60 ft apart</strong> on the chosen map. Roll initiative (<strong>d20 + Dex</strong>). No surprise rounds &mdash; both teams know each other is there. Then it's blades out.
+  </div>
+
+  <h2>Round Structure</h2>
+  <div class="rounds">
+    <div class="round">
+      <div class="num">Round 1</div>
+      <div class="name">Orient</div>
+      <div class="desc">No turn timer. Read the map, find your angles, set up your opener.</div>
+    </div>
+    <div class="round">
+      <div class="num">Rounds 2–10</div>
+      <div class="name">90-Sec Turns</div>
+      <div class="desc">Chess-clock. Ref pauses for rules questions. Move fast or get capped.</div>
+    </div>
+    <div class="round">
+      <div class="num">Round 11</div>
+      <div class="name">Sudden Death</div>
+      <div class="desc">All HP drops to 1. Last clash decides it. Still tied? It's a draw.</div>
+    </div>
+  </div>
+
+  <div class="victory">
+    <div class="l">Victory Condition</div>
+    <p><strong>Team Deathmatch.</strong> First team to drop all three opponents to unconscious wins. A character isn't <em>dead</em> until they fail <strong>3 death saves</strong> &mdash; being downed is recoverable, but every round on the floor is a round your team is fighting 2v3.</p>
+  </div>
+
+  <h2>The Locked Rules</h2>
+  <div class="two-col">
+    <ul class="tight">
+      <li>All characters <strong>Level 3</strong> with a <strong>+10 HP buffer</strong>.</li>
+      <li><strong>No Extra Attack</strong> &mdash; one swing per Attack action.</li>
+      <li><strong>Sleep is banned</strong> (5d8 = team-wipe at L3 HP).</li>
+      <li>Non-combat spells (Tiny Hut, Charm Person) <strong>banned</strong>.</li>
+    </ul>
+    <ul class="tight">
+      <li><strong>1-minute spells = whole arena</strong> duration.</li>
+      <li>Sharpshooter / GWM: <strong>&minus;3 to hit / +6 dmg</strong> (not &minus;5/+10).</li>
+      <li>Standard 5e for everything else.</li>
+      <li>Not in the rules? Use your character's abilities.</li>
+    </ul>
+  </div>
+
+  <h2>Combat-Only Skills &amp; Cover</h2>
+  <div class="two-col">
+    <ul class="tight">
+      <li><strong>Allowed:</strong> Grapple/Shove, Hide, Search.</li>
+      <li><strong>Not allowed:</strong> Improvised checks, talking your way out, "what if I…" maneuvers.</li>
+    </ul>
+    <ul class="tight">
+      <li><strong>Half cover:</strong> +2 AC / +2 Dex saves.</li>
+      <li><strong>Three-quarters:</strong> +5 AC / +5 Dex saves.</li>
+      <li><strong>Total cover:</strong> can't be targeted.</li>
+    </ul>
+  </div>
+
+  <div class="ref-note">The referee uses grid squares to settle line-of-sight disputes. Their ruling is final for the rest of the match &mdash; and if it's a new situation, it gets logged so future matches handle it the same way.</div>
+
+</section>
+
+</body>
+</html>

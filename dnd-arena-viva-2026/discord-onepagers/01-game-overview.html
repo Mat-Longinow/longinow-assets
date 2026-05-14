@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D&D Arena — Game Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #0a0a0f;
+    color: #f8f7f2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body { width: 8.5in; min-height: 11in; position: relative; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 3.5in;
+    width: 100%;
+    background-image: url('../design/heroes/the-broadcast.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,15,0.35) 0%, transparent 25%, transparent 50%, rgba(10,10,15,0.85) 85%, rgba(10,10,15,1) 100%);
+  }
+  .hero-logo {
+    position: absolute;
+    bottom: 0.35in;
+    right: 0.55in;
+    height: 70pt;
+    width: auto;
+    z-index: 3;
+    filter: drop-shadow(0 4px 18px rgba(0,0,0,0.7));
+  }
+  .hero-text {
+    position: absolute;
+    left: 0.55in;
+    right: 0.55in;
+    bottom: 0.35in;
+    z-index: 3;
+  }
+  .eyebrow {
+    color: #fbbf24;
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 8pt;
+  }
+  .title {
+    color: white;
+    font-size: 44pt;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+    text-transform: uppercase;
+  }
+  .subtitle {
+    color: rgba(255,255,255,0.78);
+    font-size: 11.5pt;
+    font-weight: 400;
+    margin-top: 10pt;
+    letter-spacing: 0.005em;
+    max-width: 5.5in;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 0.32in 0.55in 0.5in;
+    position: relative;
+  }
+  .content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 35% at 85% 30%, rgba(245,158,11,0.05), transparent 60%),
+      radial-gradient(ellipse 45% 30% at 15% 100%, rgba(147,51,234,0.04), transparent 60%);
+    pointer-events: none;
+  }
+  .content > * { position: relative; }
+
+  .pitch {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 23pt;
+  }
+  .pitch strong { color: white; }
+  .pitch .punch {
+    color: #fbbf24;
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    margin: 20pt 0 10pt;
+  }
+
+  .phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10pt;
+  }
+  .phase {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 5pt;
+    padding: 11pt 13pt;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #f59e0b, #92400e);
+  }
+  .phase .num {
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    margin-bottom: 3pt;
+  }
+  .phase h3 {
+    font-size: 14pt;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    color: white;
+    margin-bottom: 5pt;
+  }
+  .phase p {
+    font-size: 9.5pt;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.45;
+    margin: 0;
+  }
+  .phase strong { color: white; font-weight: 600; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12pt 22pt;
+  }
+  .two-col h2 { margin-top: 17pt; }
+
+  ul.tight {
+    list-style: none;
+    padding: 0;
+  }
+  ul.tight li {
+    padding: 3pt 0 3pt 13pt;
+    position: relative;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.85);
+  }
+  ul.tight li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7pt;
+    width: 4pt;
+    height: 4pt;
+    background: #f59e0b;
+    border-radius: 50%;
+  }
+  ul.tight li strong { color: white; font-weight: 600; }
+
+  .flow {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4pt 4pt 0;
+  }
+  .flow .connector {
+    position: absolute;
+    top: 21pt;
+    left: 9%;
+    right: 9%;
+    height: 1pt;
+    background: linear-gradient(to right,
+      rgba(245,158,11,0.45) 0%,
+      rgba(245,158,11,0.45) 75%,
+      rgba(248,113,113,0.75) 100%);
+    z-index: 0;
+  }
+  .flow .step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8pt;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .flow .badge {
+    width: 36pt;
+    height: 36pt;
+    border-radius: 50%;
+    background: #0a0a0f;
+    border: 1.25pt solid #f59e0b;
+    color: #fbbf24;
+    font-size: 13pt;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .flow .step.finale .badge {
+    background:
+      linear-gradient(135deg, rgba(220,38,38,0.35), rgba(245,158,11,0.18)),
+      #0a0a0f;
+    border: 1.25pt solid #f87171;
+    color: white;
+    width: 42pt;
+    height: 42pt;
+    font-size: 18pt;
+  }
+  .flow .step.finale { margin-top: -3pt; }
+  .flow .caption { text-align: center; }
+  .flow .who {
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 3pt;
+  }
+  .flow .what {
+    font-size: 10pt;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .flow .step.finale .who { color: rgba(248,113,113,0.85); }
+  .flow .step.finale .what { font-size: 12pt; }
+
+  .time-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14pt;
+    padding: 9pt 14pt;
+    background: rgba(245,158,11,0.07);
+    border: 1px solid rgba(245,158,11,0.22);
+    border-radius: 5pt;
+  }
+  .time-bar .l {
+    color: #fbbf24;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-size: 7.5pt;
+  }
+  .time-bar .v {
+    color: white;
+    font-size: 12pt;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .footer {
+    margin-top: 14pt;
+    font-size: 7pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img class="hero-logo" src="../design/logos/logo_nobg_centered.png" alt="D&D Arena">
+  <div class="hero-text">
+    <h1 class="title">Game Overview</h1>
+  </div>
+</section>
+
+<section class="content">
+
+  <div class="pitch">
+    <strong>D&amp;D Arena</strong> is a 3v3 PvP take on D&amp;D 5e. Two teams pick from 12 pre-built characters, prep in a shared town, then meet in tactical combat. Built for drop-in play &mdash; a first-timer and a 20-year DM can sit at the same table and both have a good time.
+    <span class="punch"> Like a team chess match. With fireballs.</span>
+  </div>
+
+  <h2>The Two Phases</h2>
+  <div class="phases">
+    <div class="phase">
+      <div class="num">Phase 1</div>
+      <h3>The Town</h3>
+      <p><strong>60 minutes. 500 gp pooled.</strong> Shop, train, gamble, gather intel, hunt for hidden catacombs. Every minute is a tradeoff &mdash; unused time is lost.</p>
+    </div>
+    <div class="phase">
+      <div class="num">Phase 2</div>
+      <h3>The Arena</h3>
+      <p><strong>3v3 tactical combat.</strong> 90-second turns, 10-round cap, sudden death on round 11. Last team standing wins.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h2>How Characters Are Picked</h2>
+      <ul class="tight">
+        <li><strong>12 pre-built characters</strong> &mdash; one per PHB class, all Level 3, Arena rules baked in.</li>
+        <li><strong>Each team picks 3 in private</strong>, then both teams reveal simultaneously.</li>
+        <li><strong>Mirrors allowed.</strong> No counter-picking, no draft order, no bans.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>What Winning Looks Like</h2>
+      <ul class="tight">
+        <li><strong>Team Deathmatch.</strong> First team to drop all three opponents wins.</li>
+        <li>A character isn't out until <strong>3 failed death saves</strong>. Downed is recoverable.</li>
+        <li>Round 10 with no winner? <strong>Sudden Death</strong> &mdash; HP drops to 1, last clash decides.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>The Match Flow</h2>
+  <div class="flow">
+    <div class="connector"></div>
+    <div class="step">
+      <div class="badge">1</div>
+      <div class="caption"><div class="who">Team 1</div><div class="what">Picks</div></div>
+    </div>
+    <div class="step">
+      <div class="badge">2</div>
+      <div class="caption"><div class="who">Team 2</div><div class="what">Picks</div></div>
+    </div>
+    <div class="step">
+      <div class="badge">3</div>
+      <div class="caption"><div class="who">Team 1</div><div class="what">The Town</div></div>
+    </div>
+    <div class="step">
+      <div class="badge">4</div>
+      <div class="caption"><div class="who">Team 2</div><div class="what">The Town</div></div>
+    </div>
+    <div class="step finale">
+      <div class="badge">⚔</div>
+      <div class="caption"><div class="who">Both Teams</div><div class="what">Battle</div></div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>

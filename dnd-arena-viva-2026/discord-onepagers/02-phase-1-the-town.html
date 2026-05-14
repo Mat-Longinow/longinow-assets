@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D&D Arena — Phase 1: The Town</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #0a0a0f;
+    color: #f8f7f2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 10pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body { width: 8.5in; min-height: 11in; position: relative; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 3.5in;
+    width: 100%;
+    background-image: url('../design/heroes/the-town.png');
+    background-size: cover;
+    background-position: center 35%;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,15,0.45) 0%, transparent 30%, transparent 45%, rgba(10,10,15,0.92) 88%, rgba(10,10,15,1) 100%);
+  }
+  .hero-logo {
+    position: absolute;
+    bottom: 0.35in;
+    right: 0.55in;
+    height: 70pt;
+    width: auto;
+    z-index: 3;
+    filter: drop-shadow(0 4px 18px rgba(0,0,0,0.7));
+  }
+  .hero-text {
+    position: absolute;
+    left: 0.55in;
+    right: 0.55in;
+    bottom: 0.3in;
+    z-index: 3;
+  }
+  .eyebrow {
+    color: #fbbf24;
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 7pt;
+  }
+  .title {
+    color: white;
+    font-size: 42pt;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.75);
+    text-transform: uppercase;
+  }
+  .subtitle {
+    color: rgba(255,255,255,0.78);
+    font-size: 11pt;
+    font-weight: 400;
+    margin-top: 9pt;
+    max-width: 5.5in;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 0.3in 0.55in 0.4in;
+    position: relative;
+  }
+  .content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 35% at 85% 30%, rgba(245,158,11,0.05), transparent 60%),
+      radial-gradient(ellipse 45% 30% at 15% 100%, rgba(147,51,234,0.04), transparent 60%);
+    pointer-events: none;
+  }
+  .content > * { position: relative; }
+
+  .lede {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 20pt;
+  }
+  .lede strong { color: white; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10pt;
+    margin-bottom: 22pt;
+  }
+  .stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 5pt;
+    padding: 9pt 12pt;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #f59e0b, #92400e);
+  }
+  .stat .l {
+    color: #fbbf24;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 2pt;
+  }
+  .stat .v {
+    color: white;
+    font-size: 18pt;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat .v small { font-size: 11pt; font-weight: 600; opacity: 0.7; }
+
+  h2 {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    margin: 0 0 11pt;
+  }
+
+  .locs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8pt 14pt;
+  }
+  .loc {
+    padding: 7pt 0 7pt 28pt;
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .loc:nth-child(-n+2) { border-top: none; padding-top: 0; }
+  .loc .icon {
+    position: absolute;
+    left: 0;
+    top: 6pt;
+    font-size: 14pt;
+    line-height: 1;
+  }
+  .loc:nth-child(-n+2) .icon { top: -1pt; }
+  .loc .name {
+    font-size: 10pt;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.005em;
+    margin-bottom: 1pt;
+  }
+  .loc .desc {
+    font-size: 9pt;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.4;
+  }
+  .loc.full { grid-column: span 2; }
+  .loc.full .name {
+    color: #fbbf24;
+    font-size: 11pt;
+  }
+  .loc.full .desc { color: rgba(255,255,255,0.85); }
+  .loc.full {
+    margin-top: 4pt;
+    padding-top: 11pt;
+    border-top: 1px solid rgba(245,158,11,0.25);
+  }
+
+  .tension {
+    margin-top: 17pt;
+    padding: 9pt 14pt;
+    background: rgba(245,158,11,0.07);
+    border: 1px solid rgba(245,158,11,0.22);
+    border-radius: 5pt;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.85);
+  }
+  .tension strong { color: #fbbf24; font-weight: 700; }
+  .tension em { color: rgba(255,255,255,0.7); }
+
+  .footer {
+    margin-top: 12pt;
+    font-size: 7pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img class="hero-logo" src="../design/logos/logo_nobg_centered.png" alt="D&D Arena">
+  <div class="hero-text">
+    <h1 class="title">The Town</h1>
+    <p class="subtitle">Where matches are won before a single die is rolled in combat.</p>
+  </div>
+</section>
+
+<section class="content">
+
+  <div class="lede">
+    You and your two teammates have <strong>60 minutes</strong> and <strong>500 gp pooled</strong> to prep before the arena. Six visible locations &mdash; plus one hidden you'll have to find. Spend smart: there's <strong>no banking</strong>, every unused minute is a minute set on fire.
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="l">Time</div><div class="v">60<small> min</small></div></div>
+    <div class="stat"><div class="l">Pooled Gold</div><div class="v">500<small> gp</small></div></div>
+    <div class="stat"><div class="l">Locations</div><div class="v">6<small> + 1 hidden</small></div></div>
+  </div>
+
+  <h2>The Locations</h2>
+  <div class="locs">
+
+    <div class="loc">
+      <span class="icon">🏪</span>
+      <div class="name">General Shop</div>
+      <div class="desc">Potions, oils, basic gear. Haggle (DC 15 = 10% off, DC 20 = 20%) or intimidate (DC 18 = 15%, fail = guards).</div>
+    </div>
+
+    <div class="loc">
+      <span class="icon">📚</span>
+      <div class="name">The Library</div>
+      <div class="desc">Research arena history, terrain, or tactics (15 min each, skill-gated). Wizards copy a 1st/2nd-level spell (30 min, 100 gp).</div>
+    </div>
+
+    <div class="loc">
+      <span class="icon">🎯</span>
+      <div class="name">Training Grounds</div>
+      <div class="desc">Drills for movement, defense, focus, or sparring (15&ndash;20 min, 50 gp). Earn small but real combat advantages.</div>
+    </div>
+
+    <div class="loc">
+      <span class="icon">🗡️</span>
+      <div class="name">Shady Alley</div>
+      <div class="desc">Black market. Poisoned weapons, stolen items, info brokers, trap services. Get caught and you'll lose time and gold.</div>
+    </div>
+
+    <div class="loc">
+      <span class="icon">🔮</span>
+      <div class="name">The Hag's Cottage</div>
+      <div class="desc">Solve a riddle (10 min, free, 3 guesses). Win = pick one powerful boon. Fail = lose the time.</div>
+    </div>
+
+    <div class="loc">
+      <span class="icon">🎰</span>
+      <div class="name">Lucky Dragon Casino</div>
+      <div class="desc">High-risk gambling. Card games favor CHA characters. Max 2 attempts per team, one per person.</div>
+    </div>
+
+    <div class="loc full">
+      <span class="icon">🕳️</span>
+      <div class="name">Hidden Catacombs &nbsp;<span style="color: rgba(255,255,255,0.5); font-weight: 400; font-style: italic; font-size: 9pt;">— secret entrance behind one of the 6 locations</span></div>
+      <div class="desc">Each search costs 5 min + DC 17 Perception/Investigation. Find it and pick one major reward: an extra spell, a magic item, +250 gp, a potion cache, or arena intel. The biggest prize in town &mdash; if you can find it.</div>
+    </div>
+
+  </div>
+
+  <div class="tension">
+    <strong>The strategic tension.</strong> Split up to cover ground or stick together for safety? Spend gold on items, info, or training? Take the riddle gamble or play it safe? Hunt for catacombs (high reward, big time sink) or stick to the visible map? <em>Every minute you spend somewhere is a minute you can't spend somewhere else.</em>
+  </div>
+
+</section>
+
+</body>
+</html>
