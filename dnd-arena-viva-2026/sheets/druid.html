@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D&D Arena — Thalen Moonwither, Wood Elf Druid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #0a0a0f;
+    color: #f8f7f2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body { width: 8.5in; min-height: 11in; position: relative; }
+
+  /* HERO STRIP */
+  .hero {
+    position: relative;
+    height: 2.6in;
+    width: 100%;
+    background-image: url('../../characters/druid.png');
+    background-size: cover;
+    background-position: center 25%;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,15,0.55) 0%, transparent 30%, transparent 45%, rgba(10,10,15,0.95) 88%, rgba(10,10,15,1) 100%),
+      linear-gradient(to right, rgba(10,10,15,0.85) 0%, transparent 35%);
+  }
+  .hero-text {
+    position: absolute;
+    left: 0.5in;
+    right: 0.5in;
+    bottom: 0.25in;
+    z-index: 3;
+  }
+  .eyebrow {
+    color: #fbbf24;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 6pt;
+  }
+  .title {
+    color: white;
+    font-size: 32pt;
+    font-weight: 800;
+    letter-spacing: -0.022em;
+    line-height: 0.95;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.75);
+    text-transform: uppercase;
+  }
+  .subtitle {
+    color: rgba(255,255,255,0.78);
+    font-size: 10pt;
+    font-style: italic;
+    margin-top: 7pt;
+    max-width: 5.5in;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 0.22in 0.5in 0.3in;
+    position: relative;
+  }
+  .content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 35% at 85% 30%, rgba(245,158,11,0.05), transparent 60%),
+      radial-gradient(ellipse 45% 30% at 15% 100%, rgba(251,191,36,0.04), transparent 60%);
+    pointer-events: none;
+  }
+  .content > * { position: relative; }
+
+  h2 {
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    margin: 14pt 0 7pt;
+  }
+  h2:first-of-type { margin-top: 4pt; }
+
+  /* VITAL STATS ROW */
+  .vitals {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6pt;
+    margin-bottom: 4pt;
+  }
+  .vital {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 4pt;
+    padding: 6pt 8pt;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .vital::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #f59e0b, #92400e);
+  }
+  .vital .l {
+    color: #fbbf24;
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 2pt;
+  }
+  .vital .v {
+    color: white;
+    font-size: 14pt;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  /* ABILITY SCORES */
+  .abilities {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6pt;
+  }
+  .ab {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 4pt;
+    padding: 5pt 4pt;
+    text-align: center;
+  }
+  .ab .l {
+    color: rgba(255,255,255,0.55);
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .ab .v {
+    color: white;
+    font-size: 13pt;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .ab .m {
+    color: #fbbf24;
+    font-size: 8.5pt;
+    font-weight: 700;
+  }
+
+  /* TWO COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18pt;
+    margin-top: 4pt;
+  }
+
+  .feat {
+    margin-bottom: 7pt;
+  }
+  .feat-name {
+    color: white;
+    font-size: 9pt;
+    font-weight: 700;
+    margin-bottom: 1pt;
+  }
+  .feat-desc {
+    font-size: 8.5pt;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.78);
+  }
+  .feat-desc em { color: rgba(255,255,255,0.55); }
+
+  /* SIGNATURE MOVES */
+  .moves {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6pt;
+  }
+  .move {
+    padding: 7pt 10pt 7pt 28pt;
+    background: rgba(245,158,11,0.05);
+    border: 1px solid rgba(245,158,11,0.18);
+    border-radius: 4pt;
+    position: relative;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.85);
+  }
+  .move .num {
+    position: absolute;
+    left: 9pt;
+    top: 7pt;
+    color: #fbbf24;
+    font-size: 12pt;
+    font-weight: 800;
+  }
+  .move .label {
+    color: #fbbf24;
+    font-weight: 700;
+    margin-right: 3pt;
+  }
+
+  /* ACTION ECONOMY TABLE */
+  .econ {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+  }
+  .econ td {
+    padding: 4pt 8pt;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    vertical-align: top;
+  }
+  .econ td:first-child {
+    color: #fbbf24;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    width: 1.2in;
+    white-space: nowrap;
+  }
+  .econ td:last-child {
+    color: rgba(255,255,255,0.85);
+  }
+  .econ tr:last-child td { border-bottom: none; }
+
+  /* BEAST FORM CALLOUT — companion mini-tables to the action economy */
+  .beasts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10pt;
+    margin-top: 4pt;
+  }
+  .beast {
+    background: rgba(34,197,94,0.05);
+    border: 1px solid rgba(34,197,94,0.22);
+    border-radius: 4pt;
+    padding: 7pt 10pt;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.85);
+  }
+  .beast .b-name {
+    color: #86efac;
+    font-size: 9pt;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin-bottom: 2pt;
+    text-transform: uppercase;
+  }
+  .beast .b-stats {
+    color: rgba(255,255,255,0.6);
+    font-size: 7.5pt;
+    letter-spacing: 0.06em;
+    margin-bottom: 3pt;
+  }
+  .beast strong { color: white; }
+
+  .equip {
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.78);
+  }
+  .equip strong { color: white; font-weight: 700; }
+
+  .dmg-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6pt;
+  }
+  .dmg {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 4pt;
+    padding: 6pt 9pt;
+  }
+  .dmg .l {
+    color: #fbbf24;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2pt;
+  }
+  .dmg .v {
+    color: white;
+    font-size: 11pt;
+    font-weight: 700;
+  }
+  .dmg .v small {
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    font-size: 8pt;
+  }
+
+  /* SPELL SLOTS — caster widget (gold for divine/primal: Cleric / Druid / Paladin / Ranger) */
+  .slots {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10pt;
+    align-items: center;
+    padding: 6pt 10pt;
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.22);
+    border-radius: 4pt;
+    margin-bottom: 6pt;
+  }
+  .slots .tier {
+    color: #fcd34d;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .slots .circles {
+    display: flex;
+    gap: 5pt;
+  }
+  .slots .circle {
+    width: 11pt;
+    height: 11pt;
+    border-radius: 50%;
+    border: 1.5px solid #fcd34d;
+    background: transparent;
+  }
+
+  .spell-list {
+    font-size: 8.5pt;
+    line-height: 1.42;
+    color: rgba(255,255,255,0.82);
+    margin-top: 4pt;
+  }
+  .spell-list .spell {
+    margin-bottom: 4pt;
+  }
+  .spell-list strong { color: white; font-weight: 700; }
+  .spell-list em { color: rgba(255,255,255,0.55); }
+
+  .footer {
+    margin-top: 12pt;
+    font-size: 6.5pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.32);
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 8pt;
+  }
+
+  /* ── v2 image-prominent overrides (2026-05-13) ────────────────────── */
+  html, body { font-size: 8.5pt; line-height: 1.36; }
+  body { background:
+    radial-gradient(ellipse 60% 40% at 18% 22%, rgba(251,191,36,0.10), transparent 60%),
+    radial-gradient(ellipse 45% 35% at 90% 90%, rgba(245,158,11,0.05), transparent 60%),
+    #0a0a0f; }
+
+  .header {
+    padding: 0.28in 0.5in 0.12in;
+    border-bottom: 1px solid rgba(251,191,36,0.18);
+    margin-bottom: 0.1in;
+  }
+  .header .eyebrow {
+    font-size: 7.5pt;
+    letter-spacing: 0.32em;
+    margin-bottom: 4pt;
+  }
+  .header .title { font-size: 24pt; line-height: 0.95; text-shadow: none; }
+  .header .subtitle { font-size: 9pt; margin-top: 4pt; max-width: 7.2in; }
+
+  .main { padding: 0 0.5in 0.2in; position: relative; }
+
+  .portrait {
+    float: left;
+    width: 3.7in;
+    height: 4.0in;
+    margin: 0 0.2in 0.06in 0;
+    position: relative;
+  }
+  .portrait img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    object-position: top center;
+    filter:
+      drop-shadow(0 6px 18px rgba(0,0,0,0.55))
+      drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  }
+  .portrait::after {
+    content: '';
+    position: absolute;
+    inset: 8% 12% 12% 12%;
+    background: radial-gradient(ellipse at 50% 55%, rgba(251,191,36,0.10), transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* shrink vitals + abilities to 3-col so they tuck next to the portrait */
+  .vitals { grid-template-columns: repeat(3, 1fr) !important; gap: 5pt !important; margin-bottom: 4pt !important; }
+  .abilities { grid-template-columns: repeat(3, 1fr) !important; gap: 5pt !important; }
+  .vital { padding: 5pt 8pt !important; }
+  .vital .v { font-size: 13pt !important; }
+  .ab { padding: 4pt 4pt !important; }
+  .ab .v { font-size: 12pt !important; }
+
+  h2 { font-size: 6.5pt !important; letter-spacing: 0.28em !important; margin: 5pt 0 3pt !important; }
+  h2:first-of-type { margin-top: 0 !important; }
+
+  /* clear the portrait float so features|moves get full width */
+  .clear { clear: both; padding-top: 4pt; }
+  .two-col { gap: 16pt !important; margin-top: 2pt !important; }
+
+  .feat-name { font-size: 8.5pt !important; }
+  .feat-desc { font-size: 8pt !important; line-height: 1.36 !important; }
+  .move { font-size: 8.5pt !important; line-height: 1.4 !important; padding: 5pt 10pt 5pt 26pt !important; }
+  .equip { font-size: 8.5pt !important; line-height: 1.5 !important; }
+  .spell-list { font-size: 8.5pt !important; line-height: 1.42 !important; }
+  .econ { font-size: 8.5pt !important; }
+  .econ td { padding: 3pt 8pt !important; }
+
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="eyebrow">D&D Arena · Circle of the Moon · LVL 3</div>
+  <h1 class="title">Thalen Moonwither</h1>
+  <p class="subtitle">Wood Elf Druid &mdash; <em>"Speaks softly in his own skin, louder through his teeth when the bear's in."</em></p>
+</header>
+
+<section class="main">
+
+  <div class="portrait">
+    <img src="../characters/cutouts/druid.png" alt="Druid portrait">
+  </div>
+
+  <h2>Vitals <span style="color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.1em;">&middot; druid form</span></h2>
+  <div class="vitals">
+    <div class="vital"><div class="l">HP</div><div class="v">32</div></div>
+    <div class="vital"><div class="l">AC</div><div class="v">13</div></div>
+    <div class="vital"><div class="l">Speed</div><div class="v">35</div></div>
+    <div class="vital"><div class="l">Init</div><div class="v">+2</div></div>
+    <div class="vital"><div class="l">Prof</div><div class="v">+2</div></div>
+    <div class="vital"><div class="l">Hit Dice</div><div class="v">3d8</div></div>
+  </div>
+
+  <h2>Ability Scores</h2>
+  <div class="abilities">
+    <div class="ab"><div class="l">STR</div><div class="v">8</div><div class="m">&minus;1</div></div>
+    <div class="ab"><div class="l">DEX</div><div class="v">14</div><div class="m">+2</div></div>
+    <div class="ab"><div class="l">CON</div><div class="v">16</div><div class="m">+3</div></div>
+    <div class="ab"><div class="l">INT</div><div class="v">10</div><div class="m">+0</div></div>
+    <div class="ab"><div class="l">WIS</div><div class="v">17</div><div class="m">+3</div></div>
+    <div class="ab"><div class="l">CHA</div><div class="v">10</div><div class="m">+0</div></div>
+  </div>
+
+  <div class="clear"></div>
+
+  <div class="two-col">
+    <div>
+      <h2>Class &amp; Race Features</h2>
+
+      <div class="feat">
+        <div class="feat-name">Combat Wild Shape <span style="color: rgba(255,255,255,0.5); font-weight: 400;">(bonus action, 2/match)</span></div>
+        <div class="feat-desc">Transform into a beast (CR&nbsp;1 cap at L3 thanks to Moon). <strong>Bonus action</strong>, not full action. Gain the beast's HP as a fresh bar; revert when reduced to 0 or after 1 hr.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Wild Shape Healing <span style="color: rgba(255,255,255,0.5); font-weight: 400;">(bonus, beast form only)</span></div>
+        <div class="feat-desc">Spend a spell slot while in beast form: <strong>heal 1d8 per slot level</strong>. Keeps the bear alive longer without dropping the form.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Spellcasting (WIS)</div>
+        <div class="feat-desc">Spell save DC <strong>13</strong>, spell attack <strong>+5</strong>. Prepares <strong>6 spells/day</strong> from the full druid list. Slots: 4&times; L1, 2&times; L2.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Mask of the Wild <span style="color: rgba(255,255,255,0.5); font-weight: 400;">(Wood Elf)</span></div>
+        <div class="feat-desc">Attempt to <strong>Hide when lightly obscured</strong> by natural terrain &mdash; foliage, rain, mist. Map-dependent; strong on forest/weather maps.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Fleet of Foot &middot; Fey Ancestry</div>
+        <div class="feat-desc">Base speed <strong>35 ft</strong>. Advantage on saves vs. Charmed; immune to magical sleep.</div>
+      </div>
+
+      <div class="feat">
+        <div class="feat-name">Druidic Restriction</div>
+        <div class="feat-desc">No metal armor. <em>Leather + wooden shield only.</em> Don't pick up the Paladin's plate.</div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Signature Moves</h2>
+      <div class="moves">
+        <div class="move">
+          <span class="num">1</span>
+          <span class="label">Turn-1 Brown Bear.</span>
+          Bonus action: <strong>Combat Wild Shape &rarr; Brown Bear</strong>. Fresh <strong>34 HP pool</strong>, claws+bite Multiattack, 40 ft speed. Action: <strong>Multiattack</strong> &mdash; claws (2d6+4) + bite (1d8+4) = <strong>~19 avg dmg</strong>. Two-bar tank.
+        </div>
+        <div class="move">
+          <span class="num">2</span>
+          <span class="label">Dire Wolf Kite-Lock.</span>
+          Alternative Wild Shape: <strong>Dire Wolf</strong> &mdash; HP 37, AC 14, bite 2d6+3 + <strong>STR save DC 11 or prone</strong>. Sets up Rogue Sneak Attack and disadvantages enemy ranged. Speed 50 ft.
+        </div>
+        <div class="move">
+          <span class="num">3</span>
+          <span class="label">Moonbeam Trap (L2 slot).</span>
+          Druid form. <strong>5 ft column</strong> at a chokepoint, CON save DC 13, <strong>2d10 radiant</strong>/turn on fail. <strong>Move the beam 60 ft as an action</strong> on later turns. Sustained zone-denial. Concentration.
+        </div>
+      </div>
+
+      <h2>Damage Reference</h2>
+      <div class="dmg-row">
+        <div class="dmg">
+          <div class="l">Shillelagh Qstaff</div>
+          <div class="v">1d8+3 <small>+5 hit</small></div>
+        </div>
+        <div class="dmg">
+          <div class="l">Bear Multiatk</div>
+          <div class="v">~19 <small>claw+bite</small></div>
+        </div>
+        <div class="dmg">
+          <div class="l">Moonbeam</div>
+          <div class="v">2d10 <small>radiant/rd</small></div>
+        </div>
+      </div>
+
+      <h2>Saves &amp; Skills</h2>
+      <div class="equip">
+        <strong>Saves:</strong> INT +2, WIS +5<br>
+        <strong>Skills:</strong> Perception +5, Survival +5, Animal Handling +5, Nature +2, Insight +3<br>
+        <strong>Senses:</strong> Darkvision 60 ft<br>
+        <strong>Languages:</strong> Common, Elvish, Druidic
+      </div>
+    </div>
+  </div>
+
+  <h2>Spell Slots &amp; Wild Shape <span style="color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.1em;">&middot; mark with dry-erase</span></h2>
+  <div class="slots">
+    <div class="tier">Level 1</div>
+    <div class="circles">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <div class="tier">Level 2</div>
+    <div class="circles">
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    <div class="tier">Wild Shape</div>
+    <div class="circles">
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+  </div>
+
+  <h2>Beast Forms <span style="color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.1em;">&middot; pick when you transform</span></h2>
+  <div class="beasts">
+    <div class="beast">
+      <div class="b-name">Brown Bear</div>
+      <div class="b-stats">HP 34 &middot; AC 11 &middot; Spd 40 / climb 30</div>
+      <strong>Multiattack:</strong> Claws 2d6+4 + Bite 1d8+4 (+5 hit). Reaction: OA. Bonus: spend slot &rarr; heal 1d8/lvl. <em>The DPR pick.</em>
+    </div>
+    <div class="beast">
+      <div class="b-name">Dire Wolf</div>
+      <div class="b-stats">HP 37 &middot; AC 14 &middot; Spd 50</div>
+      <strong>Bite:</strong> 2d6+3 (+5 hit) + STR DC 11 or <strong>prone</strong>. Advantage on bite if ally within 5 ft of target. <em>The control pick.</em>
+    </div>
+  </div>
+
+  <h2>Prepared Spells <span style="color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.1em;">&middot; DC 13 &middot; +5 attack</span></h2>
+  <div class="spell-list">
+    <div class="spell"><strong>Cantrips:</strong> Shillelagh (bonus, qstaff &rarr; 1d8 WIS, +5 hit, 1 min) &middot; Produce Flame (30 ft, 1d8 fire, lights scene)</div>
+    <div class="spell"><strong>L1:</strong> Entangle (conc., 20 ft sq, STR DC 13 or <strong>restrained</strong>) &middot; Healing Word (bonus, 60 ft, 1d4+3) &middot; Faerie Fire (conc., 20 ft cube, DEX DC 13, adv on hits) &middot; Goodberry (10 berries, 1 HP + sustenance each)</div>
+    <div class="spell"><strong>L2:</strong> Moonbeam (conc., 5 ft column, CON DC 13, 2d10 radiant/rd, move 60 ft) &middot; Heat Metal (conc., 60 ft, CON each turn, 2d8 fire &mdash; <strong>hard-counters plate</strong>)</div>
+    <div class="spell"><em>Concentration is one at a time. Entangle OR Faerie Fire OR Moonbeam OR Heat Metal.</em></div>
+  </div>
+
+  <h2>Action Economy <span style="color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.1em;">&middot; druid form</span></h2>
+  <table class="econ">
+    <tr><td>Action</td><td>Cast a Spell &middot; Attack (Shillelagh Qstaff 1d8+3 WIS, +5 hit) &middot; Move Moonbeam 60 ft &middot; Dash &middot; Dodge &middot; Hide (Mask of the Wild)</td></tr>
+    <tr><td>Bonus Action</td><td><strong>Combat Wild Shape</strong> (transform) &middot; Healing Word (L1) &middot; Shillelagh (cast)</td></tr>
+    <tr><td>Reaction</td><td>Opportunity Attack</td></tr>
+    <tr><td>Movement</td><td>35 ft (druid) / 40 ft bear / 50 ft wolf</td></tr>
+    <tr><td>Concentration</td><td>Moonbeam OR Entangle OR Faerie Fire OR Heat Metal &mdash; pick one</td></tr>
+  </table>
+
+  <h2>Equipment</h2>
+  <div class="equip">
+    <strong>Quarterstaff</strong> (1d8 two-handed, 1d8+WIS with Shillelagh) &middot; <strong>Scimitar</strong> (1d6 slashing, finesse) &middot; <strong>Sling + 20 Bullets</strong> (1d4, 30/120) &middot; <strong>Leather Armor</strong> (no metal) &middot; <strong>Wooden Shield</strong> (+2 AC, natural wood) &middot; <strong>Druidic Focus</strong> (carved staff / sprig of mistletoe) &middot; <strong>Explorer's Pack</strong> &middot; <em>a pebble from a streambed that still feels wet to the touch</em>
+  </div>
+
+  <div class="footer">
+    <span>D&D Arena · Arena Viva 2026</span>
+    <span>Character 04 / 12 · Druid</span>
+  </div>
+
+</section>
+
+</body>
+</html>
