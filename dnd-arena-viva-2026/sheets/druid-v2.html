@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D&D Arena — Thalen Moonwither, Wood Elf Druid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ──────────────────────────────────────────────────────────────────
+     DRUID v2 — Thalen Moonwither
+     Design notes:
+     - Portrait dominant (~3.8" tall, left column, ~1/4 of page)
+     - Single accent color: Moonlight Silver / Sage (#b8c5b2 + #d4dcc9)
+     - Card-deck pattern: every block is a card; no nested boxes-in-boxes
+     - Body type bumped to 10pt for lamination-arm's-length readability
+     - Title softened to serif (Cormorant), eyebrow gains weight
+     ────────────────────────────────────────────────────────────────── */
+
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0d0f0e;        /* near-black, slight cool cast */
+    --bg-card:  rgba(255,255,255,0.035);
+    --bg-card-hover: rgba(184,197,178,0.06);
+    --border:   rgba(184,197,178,0.18);
+    --border-strong: rgba(212,220,201,0.32);
+
+    --ink:      #f3f5ee;        /* primary text — slightly warm ivory */
+    --ink-dim:  rgba(243,245,238,0.72);
+    --ink-mute: rgba(243,245,238,0.48);
+
+    --accent:        #b8c5b2;   /* moonlight silver-sage */
+    --accent-bright: #d4dcc9;   /* moonlight highlight */
+    --accent-deep:   #6b7a64;   /* deep sage for shadows */
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 10pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    width: 8.5in;
+    min-height: 11in;
+    position: relative;
+    /* Subtle moonlight wash — single accent, no rainbow */
+    background:
+      radial-gradient(ellipse 55% 38% at 22% 18%, rgba(212,220,201,0.07), transparent 65%),
+      radial-gradient(ellipse 50% 40% at 88% 92%, rgba(184,197,178,0.045), transparent 65%),
+      var(--bg);
+  }
+
+  /* ── HEADER STRIP ─────────────────────────────────────────────── */
+  .header {
+    padding: 0.4in 0.5in 0.18in;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 0.4in;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.18in;
+  }
+  .eyebrow {
+    color: var(--accent-bright);
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    margin-bottom: 6pt;
+  }
+  .title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--ink);
+    font-size: 30pt;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.005em;
+    /* Title is soft — portrait does the wow work. No uppercase sledgehammer. */
+  }
+  .subtitle {
+    color: var(--ink-dim);
+    font-size: 10pt;
+    font-style: italic;
+    margin-top: 6pt;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 11pt;
+  }
+  .header-meta {
+    text-align: right;
+    font-size: 8pt;
+    color: var(--ink-mute);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    padding-bottom: 4pt;
+  }
+  .header-meta strong { color: var(--accent-bright); font-weight: 700; }
+
+  /* ── MAIN GRID ─────────────────────────────────────────────────── */
+  .page {
+    padding: 0 0.5in 0.3in;
+    display: grid;
+    grid-template-columns: 3.5in 1fr;
+    column-gap: 0.28in;
+    row-gap: 0.16in;
+  }
+
+  /* ── PORTRAIT BLOCK — the star ─────────────────────────────────── */
+  .portrait {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    position: relative;
+    height: 4.1in;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .portrait::before {
+    /* moonlight halo behind the figure */
+    content: '';
+    position: absolute;
+    inset: 4% 6% 18% 6%;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 45%, rgba(212,220,201,0.13), transparent 70%),
+      radial-gradient(ellipse 80% 30% at 50% 95%, rgba(184,197,178,0.18), transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .portrait img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    filter:
+      drop-shadow(0 8px 22px rgba(0,0,0,0.6))
+      drop-shadow(0 2px 5px rgba(0,0,0,0.45));
+  }
+  .portrait-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2pt;
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 10pt;
+    color: var(--accent-bright);
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(13,15,14,0.9);
+  }
+
+  /* ── CARD — the unifying pattern ───────────────────────────────── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 5pt;
+    padding: 8pt 11pt 9pt;
+    position: relative;
+  }
+  .card-title {
+    color: var(--accent-bright);
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 6pt;
+    display: flex;
+    align-items: baseline;
+    gap: 8pt;
+  }
+  .card-title .hint {
+    color: var(--ink-mute);
+    font-size: 7pt;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: none;
+    font-style: italic;
+  }
+
+  /* ── VITALS — compact card with inline value grid ──────────────── */
+  .vitals-card {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .vitals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8pt 14pt;
+  }
+  .vital {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8pt;
+    padding: 2pt 0;
+    border-bottom: 1px dotted rgba(184,197,178,0.15);
+  }
+  .vital:nth-child(n+4) { border-bottom: none; padding-bottom: 0; }
+  .vital .l {
+    color: var(--ink-mute);
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .vital .v {
+    color: var(--ink);
+    font-size: 14pt;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── ABILITY SCORES — six small cards in a row ─────────────────── */
+  .abilities-card {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .abilities {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5pt;
+  }
+  .ab {
+    text-align: center;
+    padding: 4pt 2pt 5pt;
+    background: rgba(184,197,178,0.04);
+    border: 1px solid rgba(184,197,178,0.12);
+    border-radius: 3pt;
+  }
+  .ab .l {
+    color: var(--ink-mute);
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .ab .v {
+    color: var(--ink);
+    font-size: 13pt;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 1pt;
+  }
+  .ab .m {
+    color: var(--accent-bright);
+    font-size: 9pt;
+    font-weight: 700;
+    margin-top: -1pt;
+  }
+
+  /* ── SECTION BAND (full-width row below portrait+stats) ────────── */
+  .section-band {
+    grid-column: 1 / span 2;
+    margin-top: 0.1in;
+  }
+
+  /* ── BEAST FORMS — the visual gold, scaled as 3-card row ───────── */
+  .beasts-band {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9pt;
+  }
+  .beast {
+    background: linear-gradient(180deg,
+      rgba(184,197,178,0.10) 0%,
+      rgba(184,197,178,0.04) 100%);
+    border: 1px solid var(--border-strong);
+    border-radius: 5pt;
+    padding: 8pt 11pt 9pt;
+    position: relative;
+    overflow: hidden;
+  }
+  .beast::before {
+    /* moonlight edge */
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent-bright), transparent);
+  }
+  .beast .b-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--accent-bright);
+    font-size: 13pt;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1pt;
+  }
+  .beast .b-role {
+    color: var(--ink-mute);
+    font-size: 7.5pt;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 5pt;
+  }
+  .beast .b-stats {
+    color: var(--ink-dim);
+    font-size: 8.5pt;
+    letter-spacing: 0.04em;
+    margin-bottom: 5pt;
+    padding-bottom: 5pt;
+    border-bottom: 1px dotted rgba(184,197,178,0.18);
+  }
+  .beast .b-stats strong { color: var(--ink); font-weight: 700; }
+  .beast .b-body {
+    font-size: 9pt;
+    line-height: 1.4;
+    color: var(--ink-dim);
+  }
+  .beast .b-body strong { color: var(--ink); font-weight: 700; }
+  .beast .b-body em { color: var(--accent-bright); font-style: normal; font-weight: 600; font-size: 8.5pt; display: block; margin-top: 4pt; letter-spacing: 0.04em; }
+
+  /* ── TWO-COL BAND (features | moves+spells) ────────────────────── */
+  .two-col {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.22in;
+  }
+  .col { display: flex; flex-direction: column; gap: 0.12in; }
+
+  /* ── FEATURE CARD (one card, internal items separated by rules) ── */
+  .feat-list { display: flex; flex-direction: column; gap: 6pt; }
+  .feat {
+    padding-bottom: 6pt;
+    border-bottom: 1px dotted rgba(184,197,178,0.15);
+  }
+  .feat:last-child { border-bottom: none; padding-bottom: 0; }
+  .feat-name {
+    color: var(--accent-bright);
+    font-size: 9.5pt;
+    font-weight: 700;
+    margin-bottom: 2pt;
+    letter-spacing: 0.01em;
+  }
+  .feat-name .meta {
+    color: var(--ink-mute);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 8.5pt;
+    letter-spacing: 0;
+  }
+  .feat-desc {
+    font-size: 9.5pt;
+    line-height: 1.42;
+    color: var(--ink-dim);
+  }
+  .feat-desc strong { color: var(--ink); font-weight: 700; }
+  .feat-desc em { color: var(--ink-mute); }
+
+  /* ── SIGNATURE MOVES (numbered cards) ──────────────────────────── */
+  .moves { display: flex; flex-direction: column; gap: 6pt; }
+  .move {
+    padding: 7pt 11pt 7pt 30pt;
+    background: rgba(184,197,178,0.05);
+    border: 1px solid var(--border);
+    border-left: 2pt solid var(--accent);
+    border-radius: 4pt;
+    position: relative;
+    font-size: 9.5pt;
+    line-height: 1.42;
+    color: var(--ink-dim);
+  }
+  .move:last-child { margin-bottom: 0; }
+  .move .num {
+    position: absolute;
+    left: 10pt;
+    top: 6pt;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--accent-bright);
+    font-size: 16pt;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .move .label {
+    color: var(--accent-bright);
+    font-weight: 700;
+    margin-right: 3pt;
+  }
+  .move strong { color: var(--ink); font-weight: 700; }
+
+  /* ── SLOTS (single row, circles in accent) ─────────────────────── */
+  .slots-card { /* same .card */ }
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(3, auto 1fr);
+    column-gap: 8pt;
+    row-gap: 5pt;
+    align-items: center;
+  }
+  .slots .tier {
+    color: var(--ink-mute);
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .slots .circles { display: flex; gap: 4pt; }
+  .slots .circle {
+    width: 11pt;
+    height: 11pt;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    background: transparent;
+  }
+
+  /* ── SPELLS (mini-cards stacked) ───────────────────────────────── */
+  .spell-list { display: flex; flex-direction: column; gap: 5pt; }
+  .spell {
+    font-size: 9.5pt;
+    line-height: 1.4;
+    color: var(--ink-dim);
+    padding-bottom: 5pt;
+    border-bottom: 1px dotted rgba(184,197,178,0.15);
+  }
+  .spell:last-child { border-bottom: none; padding-bottom: 0; }
+  .spell .tier-tag {
+    color: var(--accent-bright);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-right: 4pt;
+  }
+  .spell strong { color: var(--ink); font-weight: 700; }
+  .spell em { color: var(--ink-mute); font-style: italic; }
+
+  /* ── EQUIPMENT (compact card) ──────────────────────────────────── */
+  .equip {
+    font-size: 9.5pt;
+    line-height: 1.55;
+    color: var(--ink-dim);
+  }
+  .equip strong { color: var(--ink); font-weight: 700; }
+
+  /* ── FOOTER ────────────────────────────────────────────────────── */
+  .footer {
+    grid-column: 1 / span 2;
+    margin-top: 0.12in;
+    padding-top: 8pt;
+    border-top: 1px solid var(--border);
+    font-size: 7pt;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer .star { color: var(--accent); }
+
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div>
+    <div class="eyebrow">D&D Arena · Circle of the Moon</div>
+    <h1 class="title">Thalen Moonwither</h1>
+    <p class="subtitle">"Speaks softly in his own skin, louder through his teeth when the bear's in."</p>
+  </div>
+  <div class="header-meta">
+    Wood Elf Druid<br>
+    Level <strong>3</strong> · Spell DC <strong>13</strong> · Atk <strong>+5</strong><br>
+    Sheet <strong>04 / 12</strong>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- ── PORTRAIT (left column, spans two rows) ── -->
+  <div class="portrait">
+    <img src="../characters/cutouts/druid.png" alt="Thalen Moonwither portrait">
+  </div>
+
+  <!-- ── VITALS CARD (top right) ── -->
+  <section class="card vitals-card">
+    <div class="card-title">Vitals <span class="hint">druid form</span></div>
+    <div class="vitals">
+      <div class="vital"><span class="l">HP</span><span class="v">32</span></div>
+      <div class="vital"><span class="l">AC</span><span class="v">13</span></div>
+      <div class="vital"><span class="l">Spd</span><span class="v">35</span></div>
+      <div class="vital"><span class="l">Init</span><span class="v">+2</span></div>
+      <div class="vital"><span class="l">Prof</span><span class="v">+2</span></div>
+      <div class="vital"><span class="l">HD</span><span class="v">3d8</span></div>
+    </div>
+  </section>
+
+  <!-- ── ABILITY SCORES (mid right) ── -->
+  <section class="card abilities-card">
+    <div class="card-title">Abilities <span class="hint">saves: INT&nbsp;+2, WIS&nbsp;+5</span></div>
+    <div class="abilities">
+      <div class="ab"><div class="l">STR</div><div class="v">8</div><div class="m">&minus;1</div></div>
+      <div class="ab"><div class="l">DEX</div><div class="v">14</div><div class="m">+2</div></div>
+      <div class="ab"><div class="l">CON</div><div class="v">16</div><div class="m">+3</div></div>
+      <div class="ab"><div class="l">INT</div><div class="v">10</div><div class="m">+0</div></div>
+      <div class="ab"><div class="l">WIS</div><div class="v">17</div><div class="m">+3</div></div>
+      <div class="ab"><div class="l">CHA</div><div class="v">10</div><div class="m">+0</div></div>
+    </div>
+  </section>
+
+  <!-- ── BEAST FORMS — the gold pattern, scaled to 3 cards ── -->
+  <section class="section-band">
+    <div class="card-title" style="padding-left: 4pt;">Beast Forms <span class="hint">bonus action · 2 uses per match · CR 1 cap (Moon)</span></div>
+    <div class="beasts-band">
+      <div class="beast">
+        <div class="b-name">Brown Bear</div>
+        <div class="b-role">The DPR Pick</div>
+        <div class="b-stats"><strong>HP 34</strong> · AC 11 · Spd 40 / climb 30</div>
+        <div class="b-body">
+          <strong>Multiattack:</strong> Claws 2d6+4 + Bite 1d8+4 (+5 hit). <strong>~19 avg dmg/turn.</strong> Reaction OA.
+          <em>Turn-1 transform — two-bar tank, top sustained martial DPR in the meta.</em>
+        </div>
+      </div>
+      <div class="beast">
+        <div class="b-name">Dire Wolf</div>
+        <div class="b-role">The Control Pick</div>
+        <div class="b-stats"><strong>HP 37</strong> · AC 14 · Spd 50</div>
+        <div class="b-body">
+          <strong>Bite:</strong> 2d6+3 (+5 hit) + STR DC 11 or <strong>prone</strong>. Advantage on bite if ally within 5 ft of target.
+          <em>Sets up Rogue Sneak Attack. Best kiter in the kit.</em>
+        </div>
+      </div>
+      <div class="beast">
+        <div class="b-name">Druid Form</div>
+        <div class="b-role">The Caster Bar</div>
+        <div class="b-stats"><strong>HP 32</strong> · AC 13 · Spd 35</div>
+        <div class="b-body">
+          <strong>Shillelagh Qstaff:</strong> 1d8+3 WIS (+5 hit). Bonus: Healing Word, Wild Shape, Shillelagh.
+          <em>When the claws wear out — Moonbeam, Entangle, Heat Metal.</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TWO-COL: FEATURES | MOVES + SPELLS ── -->
+  <div class="two-col">
+
+    <!-- LEFT COL: FEATURES, EQUIPMENT -->
+    <div class="col">
+      <section class="card">
+        <div class="card-title">Class &amp; Race Features</div>
+        <div class="feat-list">
+          <div class="feat">
+            <div class="feat-name">Combat Wild Shape <span class="meta">bonus action · 2/match</span></div>
+            <div class="feat-desc">Transform into a CR&nbsp;1 beast as a <strong>bonus action</strong>. Gain the beast's HP as a fresh bar; revert at 0 HP or after 1 hr.</div>
+          </div>
+          <div class="feat">
+            <div class="feat-name">Wild Shape Healing <span class="meta">bonus · beast form only</span></div>
+            <div class="feat-desc">Spend a spell slot while in beast form: <strong>heal 1d8 per slot level</strong>. Keeps the bear alive without dropping the form.</div>
+          </div>
+          <div class="feat">
+            <div class="feat-name">Spellcasting (WIS)</div>
+            <div class="feat-desc">Spell save DC <strong>13</strong>, attack <strong>+5</strong>. Prepares <strong>6 spells/day</strong>. Slots: <strong>4&times; L1, 2&times; L2</strong>.</div>
+          </div>
+          <div class="feat">
+            <div class="feat-name">Mask of the Wild <span class="meta">Wood Elf</span></div>
+            <div class="feat-desc">Attempt to <strong>Hide when lightly obscured</strong> by natural terrain — foliage, rain, mist. Strong on forest / weather maps.</div>
+          </div>
+          <div class="feat">
+            <div class="feat-name">Fleet of Foot · Fey Ancestry</div>
+            <div class="feat-desc">Base speed <strong>35 ft</strong>. Advantage on saves vs. Charmed; immune to magical sleep.</div>
+          </div>
+          <div class="feat">
+            <div class="feat-name">Druidic Restriction</div>
+            <div class="feat-desc"><em>No metal armor.</em> Leather + wooden shield only. Don't pick up the Paladin's plate.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Equipment</div>
+        <div class="equip">
+          <strong>Quarterstaff</strong> · <strong>Wooden Shield</strong> (+2 AC) · <strong>Leather Armor</strong> · <strong>Scimitar</strong> (finesse backup) · <strong>Sling + 20 bullets</strong> · <strong>Druidic Focus</strong> (carved staff / mistletoe sprig) · <em>a pebble from a streambed that still feels wet to the touch.</em>
+        </div>
+      </section>
+    </div>
+
+    <!-- RIGHT COL: SIGNATURE MOVES, SLOTS, SPELLS -->
+    <div class="col">
+      <section class="card">
+        <div class="card-title">Signature Moves</div>
+        <div class="moves">
+          <div class="move">
+            <span class="num">1</span>
+            <span class="label">Turn-1 Bear.</span>
+            Bonus action: <strong>Wild Shape &rarr; Brown Bear</strong> (fresh 34 HP). Action: <strong>Multiattack</strong> for <strong>~19 avg dmg</strong>. Two-bar tank from word go.
+          </div>
+          <div class="move">
+            <span class="num">2</span>
+            <span class="label">Wolf Kite-Lock.</span>
+            <strong>Dire Wolf</strong> at 50 ft speed. Bite knocks <strong>prone on STR DC 11</strong> — sets up Rogue Sneak Attack, disadvantages enemy ranged.
+          </div>
+          <div class="move">
+            <span class="num">3</span>
+            <span class="label">Moonbeam Trap.</span>
+            L2 slot. <strong>5 ft column</strong> at a chokepoint, <strong>2d10 radiant</strong>/turn on CON DC 13. Move beam 60 ft as an action. Zone-denial. Concentration.
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Slots <span class="hint">mark with dry-erase</span></div>
+        <div class="slots">
+          <div class="tier">Level 1</div>
+          <div class="circles">
+            <div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div>
+          </div>
+          <div class="tier">Level 2</div>
+          <div class="circles">
+            <div class="circle"></div><div class="circle"></div>
+          </div>
+          <div class="tier">Wild Shape</div>
+          <div class="circles">
+            <div class="circle"></div><div class="circle"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">Prepared Spells <span class="hint">DC 13 · +5 atk · concentration: one at a time</span></div>
+        <div class="spell-list">
+          <div class="spell">
+            <span class="tier-tag">CANTRIPS</span>
+            <strong>Shillelagh</strong> (bonus · qstaff &rarr; 1d8 WIS, +5 hit, 1 min) · <strong>Produce Flame</strong> (30 ft, 1d8 fire, lights scene)
+          </div>
+          <div class="spell">
+            <span class="tier-tag">L1</span>
+            <strong>Entangle</strong> (conc · 20 ft sq · STR DC 13, restrained) · <strong>Healing Word</strong> (bonus · 60 ft · 1d4+3) · <strong>Faerie Fire</strong> (conc · DEX DC 13, adv on hits) · <strong>Goodberry</strong> (10 berries, 1 HP each)
+          </div>
+          <div class="spell">
+            <span class="tier-tag">L2</span>
+            <strong>Moonbeam</strong> (conc · 5 ft column · CON DC 13 · 2d10 radiant/rd) · <strong>Heat Metal</strong> (conc · 60 ft · 2d8 fire/rd — <em>hard-counters plate</em>)
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </div><!-- /.two-col -->
+
+  <div class="footer">
+    <span><span class="star">✦</span> D&D Arena · Arena Viva 2026</span>
+    <span>Character 04 / 12 · Druid · Circle of the Moon</span>
+  </div>
+
+</main>
+
+</body>
+</html>
