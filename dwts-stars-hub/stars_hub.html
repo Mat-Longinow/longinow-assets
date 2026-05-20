@@ -2014,6 +2014,13 @@ function switchTab(tab) {
   setInterval(postHeight, 800);
 })();
 </script>
+<script>
+/* Hub is embedded in an iframe — force outbound links to open in a new browser tab. */
+document.querySelectorAll('a[href^="http"]').forEach(function(a){
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+});
+</script>
 
 </body>
 </html>
