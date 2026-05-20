@@ -330,6 +330,14 @@ a:hover{text-decoration:underline;}
   .star-cards-gendered{grid-template-columns:1fr!important;}
   .footer{padding:40px 24px 36px;}
 }
+@media(max-width:600px){
+  .logo-bar{flex-direction:column;align-items:center;gap:20px;}
+  .logo-bar > img{height:auto!important;width:auto!important;max-width:84%!important;margin:0 auto;}
+  .logo-bar > div{margin-left:0!important;justify-content:center;}
+  .tab-bar::after{content:'';position:absolute;top:0;right:0;bottom:0;width:64px;background:linear-gradient(to right,rgba(26,21,18,0),var(--ink) 72%);pointer-events:none;z-index:5;}
+  .tab-bar::before{content:'\2192';position:absolute;top:50%;right:15px;transform:translateY(-50%);color:var(--gold-bright);font-size:20px;font-weight:600;pointer-events:none;z-index:6;animation:tabCueNudge 1.6s ease-in-out infinite;}
+}
+@keyframes tabCueNudge{0%,100%{transform:translateY(-50%) translateX(0);}50%{transform:translateY(-50%) translateX(5px);}}
 </style>
 </head>
 <body>
