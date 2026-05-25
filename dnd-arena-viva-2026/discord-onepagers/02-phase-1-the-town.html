@@ -23,7 +23,7 @@
   /* HERO */
   .hero {
     position: relative;
-    height: 3.5in;
+    height: 2.38in;
     width: 100%;
     background-image: url('../design/heroes/the-town.png');
     background-size: cover;
@@ -35,7 +35,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(to bottom, rgba(10,10,15,0.45) 0%, transparent 30%, transparent 45%, rgba(10,10,15,0.92) 88%, rgba(10,10,15,1) 100%);
+      linear-gradient(to bottom, rgba(10,10,15,0.45) 0%, transparent 30%, transparent 48%, rgba(10,10,15,0.83) 88%, rgba(10,10,15,0.97) 100%);
   }
   .hero-logo {
     position: absolute;
@@ -80,7 +80,7 @@
 
   /* CONTENT */
   .content {
-    padding: 0.3in 0.55in 0.4in;
+    padding: 0.192in 0.55in 0.4in;
     position: relative;
   }
   .content::before {
@@ -222,71 +222,70 @@
   <img class="hero-logo" src="../design/logos/logo_nobg_centered.png" alt="D&D Arena">
   <div class="hero-text">
     <h1 class="title">The Town</h1>
-    <p class="subtitle">Where matches are won before a single die is rolled in combat.</p>
   </div>
 </section>
 
 <section class="content">
 
   <div class="lede">
-    You and your two teammates have <strong>60 minutes</strong> and <strong>500 gp pooled</strong> to prep before the arena. Six visible locations &mdash; plus one hidden you'll have to find. Spend smart: there's <strong>no banking</strong>, every unused minute is a minute set on fire.
+    You and your two teammates have <strong>60 minutes</strong> and <strong>500 gp pooled</strong> to prep before the arena. <strong>Each move between locations costs 10 minutes</strong> ("On to the Next"). Most teams realistically get 3 meaningful stops out of the hour. Choose well.
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="l">Time</div><div class="v">60<small> min</small></div></div>
+    <div class="stat"><div class="l">Clock</div><div class="v">60<small> min</small></div></div>
     <div class="stat"><div class="l">Pooled Gold</div><div class="v">500<small> gp</small></div></div>
-    <div class="stat"><div class="l">Locations</div><div class="v">6<small> + 1 hidden</small></div></div>
+    <div class="stat"><div class="l">Per Move</div><div class="v">10<small> min</small></div></div>
   </div>
 
-  <h2>The Locations</h2>
+  <h2>The Locations &mdash; 6 visible &middot; 1 hidden</h2>
   <div class="locs">
 
     <div class="loc">
       <span class="icon">🏪</span>
       <div class="name">General Shop</div>
-      <div class="desc">Potions, oils, basic gear. Haggle (DC 15 = 10% off, DC 20 = 20%) or intimidate (DC 18 = 15%, fail = guards).</div>
+      <div class="desc">Potions, oils, basic gear. Haggle (Persuasion DC 15 = &minus;10%, DC 20 = &minus;20%, nat 1 raises prices) or intimidate (DC 18 = &minus;15%, fail = guards called).</div>
     </div>
 
     <div class="loc">
       <span class="icon">📚</span>
       <div class="name">The Library</div>
-      <div class="desc">Research arena history, terrain, or tactics (15 min each, skill-gated). Wizards copy a 1st/2nd-level spell (30 min, 100 gp).</div>
+      <div class="desc"><strong>Tactical Study</strong> (15 min) &mdash; one character gets +2 init, advantage on DEX saves, +15 ft speed. <strong>Study an Opponent</strong> (10 min) &mdash; advantage vs. one enemy early. <strong>Copy Spell</strong> (30 min, 100 gp, Wizard) &mdash; learn a spell.</div>
     </div>
 
     <div class="loc">
       <span class="icon">🎯</span>
       <div class="name">Training Grounds</div>
-      <div class="desc">Drills for movement, defense, focus, or sparring (15&ndash;20 min, 50 gp). Earn small but real combat advantages.</div>
+      <div class="desc">Three drills (15 min, 50 gp, skill check). <strong>Master's Forms</strong> &mdash; +1 attack. <strong>Defensive Stance</strong> &mdash; +1 AC. <strong>Bodyguard</strong> &mdash; reaction to protect an adjacent ally. Plus the <strong>Sparring Match</strong> (20 min, mini-game) &mdash; win it and pick 2 of the 3 buffs.</div>
     </div>
 
     <div class="loc">
       <span class="icon">🗡️</span>
-      <div class="name">Shady Alley</div>
-      <div class="desc">Black market. Poisoned weapons, stolen items, info brokers, trap services. Get caught and you'll lose time and gold.</div>
+      <div class="name">The Black Market</div>
+      <div class="desc"><strong>Poisoned Weapon</strong> (150 gp, +1d6 on first hit). <strong>Stolen Wares</strong> (250 gp, pick 1 of 4 magic items &mdash; but guards check on every move you make after). <strong>Thieves' Tools</strong> (100 gp, drop a caltrops mid-match). <strong>Steal from the dealer</strong> &mdash; DC 20, win big or take real damage.</div>
     </div>
 
     <div class="loc">
       <span class="icon">🔮</span>
       <div class="name">The Hag's Cottage</div>
-      <div class="desc">Solve a riddle (10 min, free, 3 guesses). Win = pick one powerful boon. Fail = lose the time.</div>
+      <div class="desc">10 min, free, three guesses at her riddle. Win = pick <strong>one of six boons</strong> (hex an enemy, frighten one, read an enemy's HP, resist a damage type, +2 to saves, advantage on death saves). Fail = the time's gone.</div>
     </div>
 
     <div class="loc">
       <span class="icon">🎰</span>
       <div class="name">Lucky Dragon Casino</div>
-      <div class="desc">High-risk gambling. Card games favor CHA characters. Max 2 attempts per team, one per person.</div>
+      <div class="desc">Three games &mdash; High Roller (75&ndash;200 gp), Card Games (40&ndash;100 gp, CHA helps), Dice (20&ndash;50 gp). <strong>Cheat</strong> (DC 18) for an auto-win &mdash; fail and you eat damage + fines. Max 2 attempts per team, one per person.</div>
     </div>
 
     <div class="loc full">
       <span class="icon">🕳️</span>
-      <div class="name">Hidden Catacombs &nbsp;<span style="color: rgba(255,255,255,0.5); font-weight: 400; font-style: italic; font-size: 9pt;">— secret entrance behind one of the 6 locations</span></div>
-      <div class="desc">Each search costs 5 min + DC 17 Perception/Investigation. Find it and pick one major reward: an extra spell, a magic item, +250 gp, a potion cache, or arena intel. The biggest prize in town &mdash; if you can find it.</div>
+      <div class="name">Hidden Catacombs &nbsp;<span style="color: rgba(255,255,255,0.5); font-weight: 400; font-style: italic; font-size: 9pt;">&mdash; rumored to lie near one of the six locations</span></div>
+      <div class="desc">You don't visit the catacombs &mdash; you stumble onto them. Every move, your spotter rolls a discovery check. Find them and pick <strong>2 of 3 legendary relics</strong> &mdash; the biggest prize in town.</div>
     </div>
 
   </div>
 
   <div class="tension">
-    <strong>The strategic tension.</strong> Split up to cover ground or stick together for safety? Spend gold on items, info, or training? Take the riddle gamble or play it safe? Hunt for catacombs (high reward, big time sink) or stick to the visible map? <em>Every minute you spend somewhere is a minute you can't spend somewhere else.</em>
+    <strong>House rules.</strong> Pay-on-fail &mdash; gold's gone if you fail the check. Carry-in damage &mdash; town wounds come with you; a 15-min <strong>Short Rest</strong> heals before the fight.
   </div>
 
 </section>
