@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colony Acres — Fall Harvest Festival 2026 · Preview</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #FFF8EC; }
+  /* Force reveal-on-scroll elements visible so the standalone preview renders fully on load */
+  #ca-funnel .car { opacity: 1 !important; transform: none !important; }
+  #ca-funnel .ca-hero-eyebrow,
+  #ca-funnel .ca-hero-title { opacity: 1 !important; animation: none !important; }
+</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!--
+    COLONY ACRES — FALL HARVEST FESTIVAL · 2026 (Centennial) — STANDALONE PREVIEW
+    Open this file directly in a browser to see how the TicketSpice page renders.
+    The page-content + floating button + pop-up upsell blocks below are the
+    same payload Mat pastes into TicketSpice (as separate Custom HTML blocks)
+    from the sibling file fall-harvest-festival-2026.html.
+
+    Source content: data/clients/colony-acres/events/fall-harvest-festival/event-info.md
+    Based on 5.21.26 Fall Strategy Meeting (Bryan ↔ Katie Colony).
+-->
+
+<style>
+    #ca-funnel {
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        overflow: hidden !important;
+        font-family: 'Open Sans', sans-serif !important;
+        background: #FFF8EC !important;
+        color: #2D1810 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BANNER ── */
+    #ca-funnel .ca-banner {
+        width: 100% !important;
+        background: #5A2A1F !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 11px 20px !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.06em !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+    #ca-funnel .ca-banner-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: wrap !important;
+    }
+    #ca-funnel .ca-banner strong { color: #E8C870 !important; }
+    #ca-funnel .ca-dot {
+        width: 3px !important; height: 3px !important;
+        background: rgba(255,255,255,0.45) !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ── NAV ── */
+    #ca-funnel .ca-nav {
+        width: 100% !important;
+        padding: 0 40px !important;
+        height: 72px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: rgba(184,84,30,0.97) !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 2px 16px rgba(90,42,31,0.35) !important;
+    }
+    #ca-funnel .ca-logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        height: 56px !important; width: 180px !important;
+        flex-shrink: 0 !important; overflow: hidden !important;
+    }
+    #ca-funnel .ca-logo-wrap img {
+        height: 56px !important; width: 180px !important;
+        max-width: 180px !important; max-height: 56px !important;
+        object-fit: contain !important; object-position: left center !important;
+        display: block !important;
+    }
+    #ca-funnel .ca-nav-right {
+        display: flex !important; align-items: center !important; gap: 16px !important;
+    }
+    #ca-funnel .ca-nav-loc {
+        font-size: 0.78rem !important;
+        color: rgba(255,255,255,0.78) !important;
+        display: flex !important; align-items: center !important; gap: 6px !important;
+    }
+    #ca-funnel .ca-nav-loc strong {
+        color: #E8C870 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        font-size: 0.7rem !important;
+    }
+    #ca-funnel .ca-nav-cta {
+        background: #E8C870 !important;
+        color: #5A2A1F !important;
+        padding: 10px 24px !important;
+        border-radius: 50px !important;
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.04em !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+    #ca-funnel .ca-nav-cta:hover {
+        background: #F5DCA0 !important;
+        color: #5A2A1F !important;
+        text-decoration: none !important;
+    }
+
+    /* ── HERO ── */
+    #ca-funnel .ca-hero {
+        width: 100% !important;
+        min-height: clamp(360px, 60vw, 620px) !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-end !important;
+        overflow: hidden !important;
+        background:
+            linear-gradient(135deg, rgba(184,84,30,0.25) 0%, rgba(90,42,31,0.55) 100%),
+            repeating-linear-gradient(45deg, #C96E2B, #C96E2B 18px, #B8541E 18px, #B8541E 36px) !important;
+        background-size: cover, auto !important;
+        background-position: center !important;
+    }
+    #ca-funnel .ca-hero-placeholder-tag {
+        position: absolute !important;
+        top: 16px !important; right: 16px !important;
+        z-index: 3 !important;
+        background: rgba(45,24,16,0.7) !important;
+        color: #E8C870 !important;
+        font-size: 0.65rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.14em !important;
+        text-transform: uppercase !important;
+        padding: 6px 12px !important;
+        border-radius: 20px !important;
+        border: 1px dashed #E8C870 !important;
+    }
+    #ca-funnel .ca-hero-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(to bottom, rgba(45,24,16,0.05) 0%, rgba(45,24,16,0.22) 40%, rgba(45,24,16,0.78) 100%) !important;
+        z-index: 1 !important;
+    }
+    #ca-funnel .ca-hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 0 48px 56px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    #ca-funnel .ca-hero-centennial {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        background: rgba(232,200,112,0.95) !important;
+        color: #5A2A1F !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        padding: 7px 16px !important;
+        border-radius: 24px !important;
+        margin-bottom: 16px !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18) !important;
+    }
+    #ca-funnel .ca-hero-eyebrow {
+        font-size: 0.72rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.22em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.85) !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+    }
+    #ca-funnel .ca-hero-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(2.8rem, 8.5vw, 5.4rem) !important;
+        font-weight: 700 !important;
+        color: white !important;
+        line-height: 1.0 !important;
+        display: block !important;
+        text-shadow: 0 2px 24px rgba(0,0,0,0.4) !important;
+    }
+    #ca-funnel .ca-hero-title em { font-style: italic !important; color: #E8C870 !important; }
+    #ca-funnel .ca-hero-sub {
+        font-size: 1rem !important;
+        color: rgba(255,255,255,0.9) !important;
+        margin-top: 14px !important;
+        display: block !important;
+        letter-spacing: 0.04em !important;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.4) !important;
+    }
+
+    /* ── BENEFITS ── */
+    #ca-funnel .ca-benefits {
+        width: 100% !important;
+        background: white !important;
+        padding: 36px 48px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(184,84,30,0.1) !important;
+    }
+    #ca-funnel .ca-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #ca-funnel .ca-benefit {
+        text-align: center !important;
+        padding: 8px 20px !important;
+        position: relative !important;
+    }
+    #ca-funnel .ca-benefit:not(:last-child)::after {
+        content: '' !important;
+        position: absolute !important;
+        right: 0 !important; top: 15% !important; bottom: 15% !important;
+        width: 1px !important;
+        background: rgba(184,84,30,0.12) !important;
+    }
+    #ca-funnel .ca-benefit-icon { font-size: 1.8rem !important; margin-bottom: 8px !important; display: block !important; }
+    #ca-funnel .ca-benefit-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1rem !important; font-weight: 600 !important;
+        color: #2D1810 !important; margin-bottom: 3px !important; display: block !important;
+    }
+    #ca-funnel .ca-benefit-desc {
+        font-size: 0.75rem !important; color: #7A5A48 !important;
+        line-height: 1.4 !important; display: block !important;
+    }
+
+    /* ── GALLERY (marquee) ── */
+    #ca-funnel .ca-gallery {
+        width: 100% !important;
+        background: #FFF8EC !important;
+        padding: 64px 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+    #ca-funnel .ca-gallery-header {
+        text-align: center !important;
+        padding: 0 48px !important;
+        margin-bottom: 40px !important;
+    }
+    #ca-funnel .ca-eye {
+        font-size: 0.7rem !important; font-weight: 600 !important;
+        letter-spacing: 0.22em !important; text-transform: uppercase !important;
+        color: #B8541E !important; margin-bottom: 8px !important; display: block !important;
+    }
+    #ca-funnel .ca-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem) !important;
+        font-weight: 700 !important; color: #2D1810 !important;
+        line-height: 1.15 !important; display: block !important;
+    }
+    #ca-funnel .ca-title em { font-style: italic !important; color: #B8541E !important; }
+    #ca-funnel .ca-gallery-mask {
+        width: 100% !important; overflow: hidden !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%) !important;
+    }
+    #ca-funnel .ca-gallery-track {
+        display: flex !important; gap: 16px !important;
+        width: max-content !important;
+        animation: caMarquee 28s linear infinite !important;
+        padding: 8px 0 !important;
+    }
+    #ca-funnel .ca-gallery-track:hover { animation-play-state: paused !important; }
+    @keyframes caMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    #ca-funnel .ca-gcard {
+        width: 380px !important; height: 260px !important;
+        border-radius: 20px !important; overflow: hidden !important;
+        flex-shrink: 0 !important; position: relative !important;
+        cursor: pointer !important;
+        background: linear-gradient(135deg, #FAEEDB, #E8C870) !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    #ca-funnel .ca-gcard:hover {
+        transform: scale(1.03) translateY(-5px) !important;
+        box-shadow: 0 24px 50px rgba(184,84,30,0.22) !important; z-index: 2 !important;
+    }
+    #ca-funnel .ca-gcard.ca-placeholder {
+        background: repeating-linear-gradient(135deg, #FAEEDB, #FAEEDB 14px, #F5DCA0 14px, #F5DCA0 28px) !important;
+        border: 2px dashed rgba(90,42,31,0.35) !important;
+    }
+    #ca-funnel .ca-gcard.ca-placeholder::before {
+        content: attr(data-placeholder) !important;
+        position: absolute !important;
+        inset: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.08em !important;
+        color: #5A2A1F !important;
+        text-align: center !important;
+        padding: 0 24px !important;
+        text-transform: uppercase !important;
+        white-space: pre-line !important;
+        z-index: 2 !important;
+    }
+    #ca-funnel .ca-gcard-label {
+        position: absolute !important; bottom: 12px !important; left: 12px !important;
+        background: rgba(45,24,16,0.7) !important; backdrop-filter: blur(8px) !important;
+        color: white !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important;
+        text-transform: uppercase !important; font-weight: 700 !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        z-index: 3 !important;
+    }
+
+    /* ── FLASH SALE BANNER ── */
+    #ca-funnel .ca-flash {
+        width: 100% !important;
+        background: linear-gradient(135deg, #C9A23B 0%, #E8C870 100%) !important;
+        padding: 28px 48px !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        border-top: 2px solid rgba(90,42,31,0.2) !important;
+        border-bottom: 2px solid rgba(90,42,31,0.2) !important;
+    }
+    #ca-funnel .ca-flash-eyebrow {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.22em !important;
+        text-transform: uppercase !important;
+        color: #5A2A1F !important;
+        margin-bottom: 6px !important;
+        display: block !important;
+    }
+    #ca-funnel .ca-flash-title {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: clamp(1.4rem, 3.5vw, 2rem) !important;
+        font-weight: 700 !important;
+        color: #2D1810 !important;
+        margin-bottom: 6px !important;
+        display: block !important;
+        line-height: 1.2 !important;
+    }
+    #ca-funnel .ca-flash-sub {
+        font-size: 0.92rem !important;
+        color: #5A2A1F !important;
+        display: block !important;
+        letter-spacing: 0.04em !important;
+    }
+    #ca-funnel .ca-flash-sub strong { color: #2D1810 !important; }
+
+    /* ── TICKET CARDS ── */
+    #ca-funnel .ca-tickets {
+        width: 100% !important;
+        background: #FAEEDB !important;
+        padding: 72px 48px !important;
+        display: block !important; box-sizing: border-box !important;
+    }
+    #ca-funnel .ca-tickets-header { text-align: center !important; margin-bottom: 48px !important; }
+    #ca-funnel .ca-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 22px !important;
+        max-width: 1400px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #ca-funnel .ca-card {
+        border-radius: 20px !important;
+        padding: 32px 26px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+        display: flex !important; flex-direction: column !important;
+    }
+    #ca-funnel .ca-card:hover { transform: translateY(-6px) !important; }
+
+    #ca-funnel .ca-card-img {
+        width: 100% !important;
+        height: 140px !important;
+        border-radius: 14px !important;
+        margin-bottom: 18px !important;
+        background: repeating-linear-gradient(135deg, #FAEEDB, #FAEEDB 10px, #F5DCA0 10px, #F5DCA0 20px) !important;
+        border: 1.5px dashed rgba(90,42,31,0.35) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        color: #5A2A1F !important;
+        text-align: center !important;
+        line-height: 1.3 !important;
+    }
+    #ca-funnel .ca-card-dark .ca-card-img,
+    #ca-funnel .ca-card-red .ca-card-img,
+    #ca-funnel .ca-card-gold .ca-card-img {
+        background: repeating-linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 10px, rgba(255,255,255,0.18) 10px, rgba(255,255,255,0.18) 20px) !important;
+        border: 1.5px dashed rgba(232,200,112,0.55) !important;
+        color: #E8C870 !important;
+    }
+
+    #ca-funnel .ca-card-cream {
+        background: linear-gradient(165deg, #FFF8EC, #FAEEDB) !important;
+        border: 1px solid rgba(184,84,30,0.14) !important;
+    }
+    #ca-funnel .ca-card-cream:hover { box-shadow: 0 20px 44px rgba(184,84,30,0.14) !important; }
+
+    #ca-funnel .ca-card-red {
+        background: #B8541E !important;
+        color: white !important;
+    }
+    #ca-funnel .ca-card-red:hover { box-shadow: 0 20px 44px rgba(184,84,30,0.38) !important; }
+
+    #ca-funnel .ca-card-dark {
+        background: #5A2A1F !important;
+        color: white !important;
+    }
+    #ca-funnel .ca-card-dark:hover { box-shadow: 0 20px 44px rgba(45,24,16,0.4) !important; }
+
+    #ca-funnel .ca-card-gold {
+        background: linear-gradient(155deg, #2D1810 0%, #5A2A1F 100%) !important;
+        color: white !important;
+        border: 2px solid #C9A23B !important;
+        box-shadow: 0 0 0 4px rgba(201,162,59,0.18) !important;
+    }
+    #ca-funnel .ca-card-gold:hover { box-shadow: 0 22px 46px rgba(201,162,59,0.35), 0 0 0 4px rgba(201,162,59,0.28) !important; }
+
+    #ca-funnel .ca-card-badge {
+        display: inline-block !important;
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.16em !important; text-transform: uppercase !important;
+        padding: 5px 12px !important; border-radius: 20px !important;
+        margin-bottom: 14px !important; width: fit-content !important;
+    }
+    #ca-funnel .ca-card-badge-light { background: rgba(255,255,255,0.18) !important; color: white !important; }
+    #ca-funnel .ca-card-badge-orange { background: #B8541E !important; color: white !important; }
+    #ca-funnel .ca-card-badge-gold { background: #C9A23B !important; color: #2D1810 !important; }
+    #ca-funnel .ca-card-badge-cream { background: #FAEEDB !important; color: #5A2A1F !important; border: 1px solid rgba(90,42,31,0.18) !important; }
+
+    #ca-funnel .ca-card-icon { font-size: 2.2rem !important; margin-bottom: 10px !important; display: block !important; }
+
+    #ca-funnel .ca-card h3 {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.5rem !important; font-weight: 700 !important;
+        line-height: 1.15 !important; margin-bottom: 14px !important; display: block !important;
+    }
+    #ca-funnel .ca-card-cream h3 { color: #2D1810 !important; }
+    #ca-funnel .ca-card-red h3,
+    #ca-funnel .ca-card-dark h3,
+    #ca-funnel .ca-card-gold h3 { color: white !important; }
+    #ca-funnel .ca-card-gold h3 em { color: #E8C870 !important; font-style: italic !important; }
+
+    #ca-funnel .ca-card-bullets {
+        list-style: none !important; padding: 0 !important; margin: 0 0 18px !important;
+        display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    #ca-funnel .ca-card-bullets li {
+        font-size: 0.9rem !important; line-height: 1.55 !important;
+        display: flex !important; align-items: flex-start !important; gap: 6px !important;
+    }
+    #ca-funnel .ca-card-cream .ca-card-bullets li { color: #5A2A1F !important; }
+    #ca-funnel .ca-card-red .ca-card-bullets li,
+    #ca-funnel .ca-card-dark .ca-card-bullets li,
+    #ca-funnel .ca-card-gold .ca-card-bullets li { color: rgba(255,255,255,0.86) !important; }
+
+    #ca-funnel .ca-card-price {
+        margin-top: auto !important;
+        padding-top: 16px !important;
+    }
+    #ca-funnel .ca-card-red .ca-card-price { border-top: 1px solid rgba(255,255,255,0.18) !important; }
+    #ca-funnel .ca-card-cream .ca-card-price { border-top: 1px solid rgba(184,84,30,0.14) !important; }
+    #ca-funnel .ca-card-dark .ca-card-price { border-top: 1px solid rgba(255,255,255,0.12) !important; }
+    #ca-funnel .ca-card-gold .ca-card-price { border-top: 1px solid rgba(201,162,59,0.4) !important; }
+
+    #ca-funnel .ca-price-row {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: baseline !important;
+        gap: 10px !important;
+        padding: 8px 0 !important;
+    }
+    #ca-funnel .ca-price-label {
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+    }
+    #ca-funnel .ca-card-cream .ca-price-label { color: #7A5A48 !important; }
+    #ca-funnel .ca-card-red .ca-price-label,
+    #ca-funnel .ca-card-dark .ca-price-label,
+    #ca-funnel .ca-card-gold .ca-price-label { color: rgba(255,255,255,0.65) !important; }
+    #ca-funnel .ca-price-was {
+        font-size: 0.95rem !important;
+        text-decoration: line-through !important;
+        opacity: 0.5 !important;
+        margin-right: 6px !important;
+    }
+    #ca-funnel .ca-price-num {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 2.1rem !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+    }
+    #ca-funnel .ca-card-cream .ca-price-num { color: #B8541E !important; }
+    #ca-funnel .ca-card-red .ca-price-num { color: #E8C870 !important; }
+    #ca-funnel .ca-card-dark .ca-price-num { color: #E8C870 !important; }
+    #ca-funnel .ca-card-gold .ca-price-num { color: #E8C870 !important; }
+    #ca-funnel .ca-price-mini {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 1.35rem !important;
+        font-weight: 700 !important;
+    }
+    #ca-funnel .ca-card-cream .ca-price-mini { color: #2D1810 !important; }
+    #ca-funnel .ca-card-red .ca-price-mini,
+    #ca-funnel .ca-card-dark .ca-price-mini,
+    #ca-funnel .ca-card-gold .ca-price-mini { color: white !important; }
+
+    #ca-funnel .ca-card-note {
+        font-size: 0.72rem !important; font-style: italic !important;
+        margin-top: 12px !important; display: block !important; line-height: 1.5 !important;
+    }
+    #ca-funnel .ca-card-red .ca-card-note { color: rgba(255,255,255,0.6) !important; }
+    #ca-funnel .ca-card-dark .ca-card-note { color: rgba(255,255,255,0.55) !important; }
+    #ca-funnel .ca-card-gold .ca-card-note { color: rgba(232,200,112,0.85) !important; }
+    #ca-funnel .ca-card-cream .ca-card-note { color: #7A5A48 !important; }
+
+    #ca-funnel .ca-card-stock {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        background: rgba(201,162,59,0.18) !important;
+        border: 1px solid rgba(201,162,59,0.4) !important;
+        color: #E8C870 !important;
+        font-size: 0.68rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.14em !important;
+        text-transform: uppercase !important;
+        padding: 5px 10px !important;
+        border-radius: 18px !important;
+        margin-top: 8px !important;
+        margin-bottom: 4px !important;
+        width: fit-content !important;
+    }
+
+    /* ── INFO ROW ── */
+    #ca-funnel .ca-info {
+        width: 100% !important;
+        background: #5A2A1F !important;
+        padding: 0 !important; display: block !important; box-sizing: border-box !important;
+    }
+    #ca-funnel .ca-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    #ca-funnel .ca-info-item {
+        text-align: center !important;
+        padding: 28px 20px !important;
+        position: relative !important;
+    }
+    #ca-funnel .ca-info-item:not(:last-child)::after {
+        content: '' !important; position: absolute !important;
+        right: 0 !important; top: 20% !important; bottom: 20% !important;
+        width: 1px !important; background: rgba(255,255,255,0.18) !important;
+    }
+    #ca-funnel .ca-info-icon { font-size: 1.5rem !important; display: block !important; margin-bottom: 6px !important; }
+    #ca-funnel .ca-info-label {
+        font-size: 0.62rem !important; font-weight: 700 !important;
+        letter-spacing: 0.18em !important; text-transform: uppercase !important;
+        color: rgba(232,200,112,0.75) !important; display: block !important; margin-bottom: 5px !important;
+    }
+    #ca-funnel .ca-info-value {
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+        color: white !important; display: block !important; line-height: 1.35 !important;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1180px) {
+        #ca-funnel .ca-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; max-width: 880px !important; }
+    }
+    @media (max-width: 860px) {
+        #ca-funnel .ca-nav { padding: 0 24px !important; height: 64px !important; }
+        #ca-funnel .ca-logo-wrap { height: 44px !important; width: 150px !important; }
+        #ca-funnel .ca-logo-wrap img { height: 44px !important; width: 150px !important; max-height: 44px !important; max-width: 150px !important; }
+        #ca-funnel .ca-benefits { padding: 32px 24px !important; }
+        #ca-funnel .ca-tickets { padding: 56px 24px !important; }
+        #ca-funnel .ca-flash { padding: 24px 24px !important; }
+        #ca-funnel .ca-info-grid { grid-template-columns: 1fr 1fr !important; }
+        #ca-funnel .ca-info-item:nth-child(2n)::after { display: none !important; }
+        #ca-funnel .ca-gallery-header { padding: 0 24px !important; }
+        #ca-funnel .ca-gcard { width: 300px !important; height: 210px !important; }
+        #ca-funnel .ca-hero-content { padding: 0 28px 40px !important; }
+    }
+    @media (max-width: 560px) {
+        #ca-funnel .ca-nav { padding: 0 16px !important; }
+        #ca-funnel .ca-nav-loc { display: none !important; }
+        #ca-funnel .ca-benefits { padding: 24px 16px !important; }
+        #ca-funnel .ca-benefits-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px 0 !important; }
+        #ca-funnel .ca-benefit:nth-child(2n)::after { display: none !important; }
+        #ca-funnel .ca-tickets { padding: 48px 16px !important; }
+        #ca-funnel .ca-grid { grid-template-columns: 1fr !important; max-width: 420px !important; }
+        #ca-funnel .ca-gallery-header { padding: 0 16px !important; }
+        #ca-funnel .ca-gcard { width: 240px !important; height: 170px !important; }
+    }
+</style>
+
+<div id="ca-funnel">
+
+    <div class="ca-banner">
+        <div class="ca-banner-inner">
+            <span>🍂 <strong>Colony Acres</strong></span>
+            <span class="ca-dot"></span>
+            <span>Fall Harvest Festival · Celebrating 100 Years</span>
+            <span class="ca-dot"></span>
+            <span>Sept 19 – Oct 31, 2026 · Wed–Sun</span>
+        </div>
+    </div>
+
+    <div class="ca-nav">
+        <div class="ca-logo-wrap">
+            <img src="https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/colony-acres-fall-harvest-festival/wip/logo-100-years-color.png" alt="Colony Acres · 100 Years">
+        </div>
+        <div class="ca-nav-right">
+            <div class="ca-nav-loc">
+                <svg width="12" height="12" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                </svg>
+                <strong>Est. 1926</strong>
+            </div>
+            <a href="#tickets" class="ca-nav-cta">Get Tickets</a>
+        </div>
+    </div>
+
+    <div class="ca-hero">
+        <span class="ca-hero-placeholder-tag">Hero · placeholder</span>
+        <div class="ca-hero-overlay"></div>
+        <div class="ca-hero-content">
+            <span class="ca-hero-centennial">⭐ 100 Years · Centennial Season</span>
+            <span class="ca-hero-eyebrow">Colony Acres · 1926 – 2026</span>
+            <span class="ca-hero-title">Fall Harvest<br><em>Festival</em></span>
+            <span class="ca-hero-sub">Wed–Sun · Sept 19 → Oct 31, 2026 · Plus Mondays 9/21 &amp; 10/12</span>
+        </div>
+    </div>
+
+    <div class="ca-benefits">
+        <div class="ca-benefits-grid">
+            <div class="ca-benefit">
+                <span class="ca-benefit-icon">🎃</span>
+                <span class="ca-benefit-title">Pumpkin Patch</span>
+                <span class="ca-benefit-desc">Pick your own from the patch</span>
+            </div>
+            <div class="ca-benefit">
+                <span class="ca-benefit-icon">🚜</span>
+                <span class="ca-benefit-title">Wagon Rides</span>
+                <span class="ca-benefit-desc">Out to the fields and back</span>
+            </div>
+            <div class="ca-benefit">
+                <span class="ca-benefit-icon">🍩</span>
+                <span class="ca-benefit-title">Donuts &amp; Slushies</span>
+                <span class="ca-benefit-desc">Farm-stand favorites all season</span>
+            </div>
+            <div class="ca-benefit">
+                <span class="ca-benefit-icon">⭐</span>
+                <span class="ca-benefit-title">100 Year Celebration</span>
+                <span class="ca-benefit-desc">A century of family farming</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ca-gallery">
+        <div class="ca-gallery-header car">
+            <span class="ca-eye">In the Fields</span>
+            <span class="ca-title">A century of <em>fall harvest</em></span>
+        </div>
+        <div class="ca-gallery-mask">
+            <div class="ca-gallery-track">
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 1&#10;380 × 260&#10;Pumpkin Patch"><div class="ca-gcard-label">Pumpkin Patch</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 2&#10;380 × 260&#10;Wagon Ride"><div class="ca-gcard-label">Wagon Ride</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 3&#10;380 × 260&#10;Family Fun"><div class="ca-gcard-label">Family Fun</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 4&#10;380 × 260&#10;Farm Stand"><div class="ca-gcard-label">Farm Stand</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 5&#10;380 × 260&#10;Fall Colors"><div class="ca-gcard-label">Fall Colors</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 6&#10;380 × 260&#10;Centennial"><div class="ca-gcard-label">Centennial</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 1&#10;380 × 260&#10;Pumpkin Patch"><div class="ca-gcard-label">Pumpkin Patch</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 2&#10;380 × 260&#10;Wagon Ride"><div class="ca-gcard-label">Wagon Ride</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 3&#10;380 × 260&#10;Family Fun"><div class="ca-gcard-label">Family Fun</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 4&#10;380 × 260&#10;Farm Stand"><div class="ca-gcard-label">Farm Stand</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 5&#10;380 × 260&#10;Fall Colors"><div class="ca-gcard-label">Fall Colors</div></div>
+                <div class="ca-gcard ca-placeholder" data-placeholder="Image 6&#10;380 × 260&#10;Centennial"><div class="ca-gcard-label">Centennial</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ca-flash">
+        <span class="ca-flash-eyebrow">⚡ Flash Sale · Aug 26 – 31</span>
+        <span class="ca-flash-title">20% off all in-season tickets — plus the Launch Day Special</span>
+        <span class="ca-flash-sub"><strong>Launch Day Special $17.95</strong> · First 300 buyers only · Any-day ticket + pumpkin + donut + drink</span>
+    </div>
+
+    <div class="ca-tickets" id="tickets">
+        <div class="ca-tickets-header car">
+            <span class="ca-eye">Tickets &amp; Passes</span>
+            <span class="ca-title">Pick your <em>fall pass</em></span>
+        </div>
+        <div class="ca-grid">
+
+            <div class="ca-card ca-card-cream car">
+                <div class="ca-card-img">Image · ticket card 1<br>~600 × 420</div>
+                <span class="ca-card-badge ca-card-badge-cream">Weekday</span>
+                <span class="ca-card-icon">🎟</span>
+                <h3>GA Weekday</h3>
+                <ul class="ca-card-bullets">
+                    <li>🚜 Standard farm admission</li>
+                    <li>📅 Wed &amp; Thu, in-season</li>
+                    <li>🍂 Plus Mon 9/21 &amp; Mon 10/12</li>
+                </ul>
+                <div class="ca-card-price">
+                    <div class="ca-price-row">
+                        <span class="ca-price-label">Online</span>
+                        <span><span class="ca-price-was">$13.80</span><span class="ca-price-num">$10<span style="font-size:1.4rem">.95</span></span></span>
+                    </div>
+                    <div class="ca-price-row">
+                        <span class="ca-price-label">Flash Sale</span>
+                        <span class="ca-price-mini">$10.40</span>
+                    </div>
+                </div>
+                <span class="ca-card-note">$13.80 at the door · Aug 26–31 flash-sale price shown</span>
+            </div>
+
+            <div class="ca-card ca-card-red car d1">
+                <div class="ca-card-img">Image · ticket card 2<br>~600 × 420</div>
+                <span class="ca-card-badge ca-card-badge-light">Most Popular</span>
+                <span class="ca-card-icon">🍂</span>
+                <h3>GA Weekend</h3>
+                <ul class="ca-card-bullets">
+                    <li>🚜 Standard farm admission</li>
+                    <li>📅 Fri, Sat &amp; Sun, in-season</li>
+                    <li>🎃 Best weekend energy</li>
+                </ul>
+                <div class="ca-card-price">
+                    <div class="ca-price-row">
+                        <span class="ca-price-label">Online</span>
+                        <span><span class="ca-price-was">$15.80</span><span class="ca-price-num">$12<span style="font-size:1.4rem">.00</span></span></span>
+                    </div>
+                    <div class="ca-price-row">
+                        <span class="ca-price-label">Flash Sale</span>
+                        <span class="ca-price-mini">$11.95</span>
+                    </div>
+                </div>
+                <span class="ca-card-note">$15.80 at the door · Aug 26–31 flash-sale price shown</span>
+            </div>
+
+            <div class="ca-card ca-card-dark car d2">
+                <div class="ca-card-img">Image · ticket card 3<br>~600 × 420</div>
+                <span class="ca-card-badge ca-card-badge-orange">Best Value</span>
+                <span class="ca-card-icon">🏆</span>
+                <h3>Season Pass</h3>
+                <ul class="ca-card-bullets">
+                    <li>♾️ Unlimited fall visits</li>
+                    <li>🍂 Sept 19 → Oct 31, 2026</li>
+                    <li>📅 Valid every operating day</li>
+                </ul>
+                <div class="ca-card-price">
+                    <div class="ca-price-row">
+                        <span class="ca-price-label">Regular</span>
+                        <span><span class="ca-price-num">$39<span style="font-size:1.4rem">.95</span></span></span>
+                    </div>
+                    <div class="ca-price-row">
+                        <span class="ca-price-label">Flash Sale</span>
+                        <span class="ca-price-mini">$31.95</span>
+                    </div>
+                </div>
+                <span class="ca-card-note">F&amp;B / retail discount not included this year</span>
+            </div>
+
+            <div class="ca-card ca-card-gold car d3">
+                <div class="ca-card-img">Image · ticket card 4<br>~600 × 420</div>
+                <span class="ca-card-badge ca-card-badge-gold">⭐ Centennial Launch</span>
+                <span class="ca-card-icon">🎁</span>
+                <h3>Launch Day <em>Special</em></h3>
+                <ul class="ca-card-bullets">
+                    <li>🎟 Any-day admission</li>
+                    <li>🎃 1 pumpkin</li>
+                    <li>🍩 1 donut</li>
+                    <li>🥤 Choice of slushie or lemonade</li>
+                </ul>
+                <span class="ca-card-stock">⚡ Only 300 available</span>
+                <div class="ca-card-price">
+                    <div class="ca-price-row">
+                        <span class="ca-price-label">Bundle Value</span>
+                        <span><span class="ca-price-was">$36.00</span><span class="ca-price-num">$17<span style="font-size:1.4rem">.95</span></span></span>
+                    </div>
+                    <div class="ca-price-row">
+                        <span class="ca-price-label">You Save</span>
+                        <span class="ca-price-mini">50% off</span>
+                    </div>
+                </div>
+                <span class="ca-card-note">First 300 buyers only · while inventory lasts</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="ca-info">
+        <div class="ca-info-grid">
+            <div class="ca-info-item">
+                <span class="ca-info-icon">📍</span>
+                <span class="ca-info-label">Where</span>
+                <span class="ca-info-value">Colony Acres</span>
+            </div>
+            <div class="ca-info-item">
+                <span class="ca-info-icon">📅</span>
+                <span class="ca-info-label">Season</span>
+                <span class="ca-info-value">Sept 19 – Oct 31, 2026</span>
+            </div>
+            <div class="ca-info-item">
+                <span class="ca-info-icon">🕘</span>
+                <span class="ca-info-label">Open Days</span>
+                <span class="ca-info-value">Wed–Sun<br>+ Mon 9/21 &amp; 10/12</span>
+            </div>
+            <div class="ca-info-item">
+                <span class="ca-info-icon">⭐</span>
+                <span class="ca-info-label">Celebrating</span>
+                <span class="ca-info-value">100 Years · Est. 1926</span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #ca-funnel -->
+
+<!-- Floating Get Tickets button (separate TS Custom HTML block) -->
+<style>
+    #ca-float-btn {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        padding: 12px 16px 20px !important;
+        background: linear-gradient(to top, rgba(255,248,236,0.97) 55%, transparent) !important;
+        display: flex !important;
+        justify-content: center !important;
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    #ca-float-btn.ca-float-hidden {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        pointer-events: none !important;
+    }
+    #ca-float-btn a {
+        display: block !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        background: #B8541E !important;
+        color: #ffffff !important;
+        font-family: 'Zilla Slab', 'Times New Roman', serif !important;
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        padding: 17px 24px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 8px 32px rgba(184,84,30,0.40) !important;
+        transition: transform 0.15s, box-shadow 0.15s, background 0.2s !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+    #ca-float-btn a:hover {
+        background: #8B3F16 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 14px 40px rgba(184,84,30,0.55) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div id="ca-float-btn">
+    <a href="#tickets">🎟 Get Tickets</a>
+</div>
+
+<script>
+    (function() {
+        var floatBtn = document.getElementById('ca-float-btn');
+        if (floatBtn) {
+            floatBtn.querySelector('a').addEventListener('click', function() {
+                floatBtn.classList.add('ca-float-hidden');
+            });
+        }
+        document.querySelectorAll('#ca-funnel a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
