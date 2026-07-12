@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160">
+  <style>
+    .word { font-family: 'SF Pro Rounded', 'ui-rounded', 'Poppins', system-ui, sans-serif; font-weight: 800; font-size: 96px; }
+  </style>
+  
+  <text x="20" y="112" class="word" fill="#ffffff">Brain <tspan fill="#0bc9a7">iQ</tspan></text>
+  
+</svg>

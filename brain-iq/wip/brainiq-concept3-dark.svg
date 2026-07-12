@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160">
+  <style>
+    .word { font-family: 'SF Pro Rounded', 'ui-rounded', 'Poppins', system-ui, sans-serif; font-weight: 800; font-size: 96px; }
+  </style>
+  
+    <circle cx="70" cy="80" r="52" fill="none" stroke="#0bc9a7" stroke-width="8"/>
+    <g stroke="#ffffff" stroke-width="4">
+      <line x1="70" y1="52" x2="48" y2="96"/>
+      <line x1="70" y1="52" x2="92" y2="96"/>
+      <line x1="48" y1="96" x2="92" y2="96"/>
+    </g>
+    <circle cx="70" cy="52" r="7" fill="#0bc9a7"/>
+    <circle cx="48" cy="96" r="7" fill="#0bc9a7"/>
+    <circle cx="92" cy="96" r="7" fill="#0bc9a7"/>
+    
+  <text x="150" y="112" class="word" fill="#ffffff">Brain <tspan fill="#0bc9a7">iQ</tspan></text>
+  
+</svg>
