@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Allign v2 — diagram bake-off (A1 / A2 / B)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep-blue:#031542;
+  --blue-slate:#5a7c98;
+  --abyss-blue:#2b4452;
+  --cloud-chrome:#bfc8cc;
+  --silver-haze:#95a3ad;
+  --ink:#0b0b0d;
+  --ink-70:#0b0b0db3;
+  --ink-50:#0b0b0d80;
+  --ink-30:#0b0b0d4d;
+  --white:#fff;
+  --n-50:#e5e5e5; --n-100:#d4d4d4; --n-200:#afafaf; --n-300:#8f8f8f;
+  --n-400:#676767; --n-500:#545454; --n-600:#363636; --n-700:#222; --n-800:#1a1a1a;
+  --sp1:4px; --sp2:8px; --sp3:16px; --sp4:40px; --sp5:64px; --sp6:80px; --sp7:100px; --sp8:140px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Geist','Inter Tight',sans-serif;
+  background:var(--n-50);
+  color:var(--ink);
+}
+.mono{font-family:'Geist Mono',monospace;}
+.notebar{
+  background:var(--n-700); color:var(--white);
+  padding:var(--sp3) var(--sp4);
+  font-family:'Geist Mono',monospace; font-size:13px; line-height:1.5;
+}
+.notebar b{color:var(--cloud-chrome);}
+.wrap{max-width:1280px; margin:0 auto; padding:0 var(--sp4);}
+h1.pagehead{
+  padding:var(--sp6) var(--sp4) var(--sp3);
+  max-width:1280px; margin:0 auto;
+  font-size:32px; line-height:1.1; font-weight:600;
+}
+.pagehead .sub{font-size:16px; font-weight:400; color:var(--ink-70); margin-top:var(--sp2);}
+
+.concept{
+  padding:var(--sp7) var(--sp4);
+  border-top:1px solid var(--ink-30);
+}
+.concept.dark{background:var(--deep-blue); color:var(--white);}
+.concept.dark .concept-label{color:var(--silver-haze);}
+.concept.dark .concept-note{color:var(--cloud-chrome);}
+.concept-label{
+  font-family:'Geist Mono',monospace; font-size:13px; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--ink-50); margin-bottom:var(--sp1);
+}
+.concept-title{font-size:28px; font-weight:600; margin:0 0 var(--sp2);}
+.concept-note{font-size:14px; color:var(--ink-70); max-width:640px; margin-bottom:var(--sp6);}
+
+/* ============ A1 — LADDER STANDALONE ============ */
+.ladder{
+  display:flex; flex-direction:column-reverse; gap:6px;
+  max-width:900px;
+}
+.rung{
+  display:grid; grid-template-columns:56px 1fr; gap:var(--sp3);
+  align-items:center;
+  padding:var(--sp3) var(--sp4);
+  border-radius:8px;
+  transition:transform .15s;
+}
+.rung .num{
+  font-family:'Geist Mono',monospace; font-size:28px; font-weight:500;
+}
+.rung .name{font-size:19px; font-weight:600; margin-bottom:2px;}
+.rung .tell{font-size:14px; font-style:italic; opacity:.85;}
+/* emotional gradient: bottom = heavy/dark/cramped, top = light/open/airy */
+.rung.l0{ background:#020a26; color:#8f9bb8; padding-top:12px; padding-bottom:12px; }
+.rung.l0 .num{color:#39456e;}
+.rung.l1{ background:#0c1c4a; color:#a9b4cf; padding-top:16px; padding-bottom:16px; }
+.rung.l1 .num{color:#4a5a8c;}
+.rung.l2{ background:#1e3660; color:#c4cee0; padding-top:22px; padding-bottom:22px; }
+.rung.l2 .num{color:var(--silver-haze);}
+.rung.l3{ background:#4a6f8f; color:#eef3f7; padding-top:28px; padding-bottom:28px; }
+.rung.l3 .num{color:var(--white);}
+.rung.l4{ background:linear-gradient(135deg,#bfc8cc,#fff); color:var(--ink); padding-top:36px; padding-bottom:36px; box-shadow:0 8px 30px rgba(255,255,255,.15);}
+.rung.l4 .num{color:var(--abyss-blue);}
+.rung.l4 .tell{opacity:.65;}
+.hook{
+  margin-top:var(--sp5); padding:var(--sp3) var(--sp4);
+  border-left:2px solid var(--silver-haze);
+  font-size:15px; color:var(--cloud-chrome); max-width:640px;
+}
+
+/* ============ A2 — STACK STANDALONE ============ */
+.stackwrap{display:flex; gap:var(--sp7); align-items:flex-end; flex-wrap:wrap;}
+.stack{
+  display:flex; flex-direction:column-reverse; gap:4px;
+}
+.slab{
+  height:64px; border-radius:6px;
+  display:flex; align-items:center; padding:0 var(--sp4);
+  font-weight:600; font-size:16px;
+  color:var(--white);
+}
+.slab .desc{display:block; font-size:12px; font-weight:400; opacity:.75; margin-top:2px;}
+.slab.context{width:560px; background:var(--deep-blue);}
+.slab.capabilities{width:500px; background:#123153;}
+.slab.operators{width:440px; background:var(--abyss-blue);}
+.slab.cadence{width:380px; background:#3d647e;}
+.slab.oversight{width:320px; background:var(--blue-slate);}
+
+.failure-mode{
+  max-width:340px;
+}
+.failure-mode .tag{
+  font-family:'Geist Mono',monospace; font-size:12px; text-transform:uppercase;
+  color:var(--n-500); margin-bottom:var(--sp2);
+}
+.ghost-slab{
+  height:64px; width:280px; border-radius:6px;
+  border:2px dashed rgba(43,68,82,.5);
+  background:repeating-linear-gradient(135deg, rgba(43,68,82,.08) 0 8px, transparent 8px 16px);
+  display:flex; align-items:center; padding:0 var(--sp4);
+  font-weight:600; color:var(--abyss-blue); opacity:.6;
+  transform:rotate(-7deg) translateY(4px);
+  position:relative;
+  margin-top:var(--sp4);
+}
+.ghost-slab::after{
+  content:"⚡ nothing beneath it"; position:absolute; bottom:-22px; left:0;
+  font-size:11px; font-style:italic; color:var(--n-500); opacity:.8;
+}
+.crack{
+  position:absolute; top:0; left:38%; width:2px; height:100%;
+  background:var(--n-700); opacity:.4; transform:skewX(-8deg);
+}
+.contrarian{
+  margin-top:var(--sp7); padding:var(--sp3) var(--sp4);
+  border-left:2px solid var(--blue-slate);
+  font-size:15px; color:var(--ink-70); max-width:640px;
+}
+
+/* ============ B — COMBINED ============ */
+.combo{
+  display:grid; grid-template-columns:1fr 90px 1fr; gap:0; align-items:end;
+  max-width:1000px;
+}
+.combo .stack{align-items:flex-end;}
+.combo .slab{width:100% !important;}
+.combo-col-stack{display:flex; flex-direction:column; gap:6px;}
+.combo-col-ladder{display:flex; flex-direction:column-reverse; gap:6px;}
+.combo .slab, .combo .rung{width:100%;}
+.bracket-col{
+  position:relative; height:100%;
+  display:flex; flex-direction:column-reverse;
+}
+.bracket-group{flex:1; position:relative; display:flex; align-items:center; justify-content:center;}
+.bracket-group svg{width:100%; height:100%;}
+.combo-labels{display:flex; justify-content:space-between; max-width:1000px; margin-bottom:var(--sp3);}
+.combo-labels span{font-family:'Geist Mono',monospace; font-size:12px; text-transform:uppercase; color:var(--silver-haze);}
+
+.risk{
+  margin-top:var(--sp6); padding:var(--sp3) var(--sp4);
+  background:rgba(255,255,255,.06); border-radius:8px;
+  font-size:14px; color:var(--cloud-chrome); max-width:640px;
+}
+
+.decision{
+  padding:var(--sp7) var(--sp4);
+  background:var(--n-700); color:var(--white);
+}
+.decision h2{font-size:22px; margin-top:0;}
+.decision ol{padding-left:20px; line-height:1.7; font-size:15px;}
+.decision code{background:rgba(255,255,255,.1); padding:2px 6px; border-radius:4px; font-family:'Geist Mono',monospace; font-size:13px;}
+
+@media (max-width:900px){
+  .combo{grid-template-columns:1fr; gap:var(--sp5);}
+  .bracket-col{display:none;}
+  .stackwrap{flex-direction:column; align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<div class="notebar">
+  <b>DIAGRAM BAKE-OFF — for Mat's eyes, side-by-side comparison only.</b> Rough on purpose, per brief. A1 and A2 are more finished than B because two-diagram-wins is the working prediction; B is intentionally the least polished to test the "impressive object nobody decodes" risk honestly. Nothing here is final copy, final type, or final layout — pick a direction, then it gets built for real.
+</div>
+
+<h1 class="pagehead">Allign v2 — ladder / stack diagram concepts
+  <div class="sub">Peer request tr_20260730_allignsite · Studio Lead → Mat · 2026-07-30</div>
+</h1>
+
+<!-- ============ CONCEPT A1 ============ -->
+<section class="concept dark">
+  <div class="wrap">
+    <div class="concept-label">Concept A1 — diagnostic</div>
+    <h2 class="concept-title">"Where are you?"</h2>
+    <p class="concept-note">The ladder, standalone. Job: a reader locates themself in ~4 seconds. Emotional gradient bottom→top: L0 is cramped/dark/dense, L4 is open/light/airy. The tell — not just the level name — is what makes someone wince and recognize themselves.</p>
+
+    <div class="ladder">
+      <div class="rung l0">
+        <div class="num">0</div>
+        <div><div class="name">Ad hoc</div><div class="tell">Nobody could tell you what AI is being used for this week.</div></div>
+      </div>
+      <div class="rung l1">
+        <div class="num">1</div>
+        <div><div class="name">Assisted</div><div class="tell">Your best people got faster — and none of it survives them leaving.</div></div>
+      </div>
+      <div class="rung l2">
+        <div class="num">2</div>
+        <div><div class="name">Automated</div><div class="tell">A few scenarios and scripts run on their own. They break quietly; someone notices a week later.</div></div>
+      </div>
+      <div class="rung l3">
+        <div class="num">3</div>
+        <div><div class="name">Delegated</div><div class="tell">A job gets done every day that nobody on payroll does — and it escalates to you when it's unsure.</div></div>
+      </div>
+      <div class="rung l4">
+        <div class="num">4</div>
+        <div><div class="name">Collaborative</div><div class="tell">A process spans two or more lanes and completes without you in the middle.</div></div>
+      </div>
+    </div>
+
+    <div class="hook">Hook, sits under the diagram: most owners think they're at Level 2. Almost all of them are at Level 1.<br><span style="opacity:.7">(Interaction note: clicking a rung would expand tell + cost-of-staying — self-assessment mechanic, not built in this rough pass.)</span></div>
+  </div>
+</section>
+
+<!-- ============ CONCEPT A2 ============ -->
+<section class="concept">
+  <div class="wrap">
+    <div class="concept-label">Concept A2 — prescriptive</div>
+    <h2 class="concept-title">"How do I progress?"</h2>
+    <p class="concept-note">The stack, standalone, bottom-up. Foundation widest/heaviest. Width narrows as it climbs to show you're building on top of, not replacing, what's below — dependency, not just sequence. Right side: the failure-mode illustration — an agent floated in with nothing under it.</p>
+
+    <div class="stackwrap">
+      <div class="stack">
+        <div class="slab context">Context<span class="desc">The business written down somewhere a machine can read</span></div>
+        <div class="slab capabilities">Capabilities<span class="desc">Email, calendar, docs, systems of record — wired once</span></div>
+        <div class="slab operators">Operators<span class="desc">Agents that own a lane instead of answering a prompt</span></div>
+        <div class="slab cadence">Cadence<span class="desc">Clock + event triggers — work that happens without being asked</span></div>
+        <div class="slab oversight">Oversight<span class="desc">Authority gates, logs, escalation paths</span></div>
+      </div>
+
+      <div class="failure-mode">
+        <div class="tag">Why the pilot died</div>
+        <div class="ghost-slab">
+          Operators
+          <div class="crack"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contrarian">Most businesses buy the middle of the stack — an agent with no context and no wired capabilities beneath it. That's why the pilot died.</div>
+  </div>
+</section>
+
+<!-- ============ CONCEPT B ============ -->
+<section class="concept dark">
+  <div class="wrap">
+    <div class="concept-label">Concept B — combined</div>
+    <h2 class="concept-title">Stack unlocks ladder</h2>
+    <p class="concept-note">Stack left, ladder right, brackets showing which layers unlock which rung. Deliberately the least polished of the three — this is the one to stress-test against the "impressive object, nobody decodes it in two seconds" risk. If it doesn't read fast here, rough, it won't read fast built either.</p>
+
+    <div class="combo-labels"><span>The Stack</span><span>The Ladder</span></div>
+    <div class="combo">
+      <div class="combo-col-stack">
+        <div class="slab oversight" style="height:52px;">Oversight</div>
+        <div class="slab cadence" style="height:52px;">Cadence</div>
+        <div class="slab operators" style="height:52px;">Operators</div>
+        <div class="slab capabilities" style="height:52px;">Capabilities</div>
+        <div class="slab context" style="height:52px;">Context</div>
+      </div>
+      <div class="bracket-col mono" style="font-size:11px; color:var(--silver-haze);">
+        <div class="bracket-group" style="flex:1;">3→4</div>
+        <div class="bracket-group" style="flex:2;">2→3</div>
+        <div class="bracket-group" style="flex:2;">1→2</div>
+      </div>
+      <div class="combo-col-ladder">
+        <div class="rung l4" style="padding:10px 16px;"><div class="num" style="font-size:18px;">4</div><div class="name" style="font-size:15px;">Collaborative</div></div>
+        <div class="rung l3" style="padding:10px 16px;"><div class="num" style="font-size:18px;">3</div><div class="name" style="font-size:15px;">Delegated</div></div>
+        <div class="rung l2" style="padding:10px 16px;"><div class="num" style="font-size:18px;">2</div><div class="name" style="font-size:15px;">Automated</div></div>
+        <div class="rung l1" style="padding:10px 16px;"><div class="num" style="font-size:18px;">1</div><div class="name" style="font-size:15px;">Assisted</div></div>
+        <div class="rung l0" style="padding:10px 16px;"><div class="num" style="font-size:18px;">0</div><div class="name" style="font-size:15px;">Ad hoc</div></div>
+      </div>
+    </div>
+
+    <div class="risk">Honest read after building it rough: it takes real label-reading to parse which two slabs pair to which jump — brackets alone (no real SVG lines in this pass) don't do it. That's the two-second failure the brief warned about happening live, not hypothetically. Leaning this confirms All-istar's prediction: two standalone diagrams for the site, combined form saved for the one-pager/deck where Mat narrates it.</div>
+  </div>
+</section>
+
+<div class="decision">
+  <div class="wrap">
+    <h2>Studio Lead's read + the two open questions</h2>
+    <p><b>Bake-off verdict:</b> A1 and A2 both land — each does one job, survives mobile at a glance, and slots into its own IA section (A1 = §4 The Ladder, A2 = §5 The Stack per All-istar's proposed IA). B, even rough, confirms the predicted risk: decoding which bracket maps to which rung takes more than the two seconds a hero graphic gets. Recommend: <b>build A1 + A2 for the live site, save the combined form for the one-pager/deck</b> where Mat is narrating it out loud — matches All-istar's own prediction in the brief.</p>
+
+    <h2>Open question 1 — Webflow-hybrid vs. standalone</h2>
+    <p><b>Call: Webflow-hybrid</b>, same pattern as Arch (<code>~/Desktop/arch</code> — thin Webflow loader + real page content shipped via git push, no Designer wall). Reasons: (1) v1 is already a static single-file build that slots into this pattern cleanly — no migration cost. (2) Mat's own site is lower cadence than Arch, but the hybrid pattern's real payoff is edit-and-ship without touching Designer, which matters just as much for a one-person practice site that'll get revised again once the outreach machine finds out what messaging actually converts. (3) Standalone would mean a second hosting/deploy surface to maintain for a site with no CMS need — pure overhead.</p>
+
+    <h2>Open question 2 — v1 revision vs. fresh v2</h2>
+    <p><b>Call: fresh v2, carrying v1's design-token system forward</b> — agrees with All-istar's lean. The keep-list (hero line, "everything still routes through you," closing CTA, the whole token architecture) is real and worth preserving, but the IA is different enough (stat bar, pain-card grid, ladder section, stack section, process strip, FAQ accordion — none of which exist in v1) that patching v1 in place would fight the existing section order more than it would save. Build clean against the same tokens; port the surviving copy lines in, don't inherit the shell.</p>
+  </div>
+</div>
+
+</body>
+</html>
