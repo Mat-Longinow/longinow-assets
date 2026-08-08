@@ -1,3 +1,57 @@
-<!-- SUPERSEDED 2026-08-08 — stray output of the retired make_grocery_html.py draft.
-     Canonical output is grocery-list-2026-08-08.html (from generate_html_list.py).
-     Left in place only because the sandbox blocks rm. -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grocery List — Saturday, August 8, 2026</title><style>
+:root{--ink:#1a2238;--gold:#b8893f;--gold2:#d9b070;--bg:#faf7f2;--card:#fff;
+--mut:#7a8095;--line:#e8e2d6;--green:#2f7d5b;}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px 60px}
+header{background:linear-gradient(135deg,#1a2238 0%,#2b3556 60%,#3a3f2e 100%);color:#fff;
+padding:44px 20px 54px;text-align:center;border-bottom:4px solid var(--gold)}
+header .eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:11.5px;
+color:var(--gold2);font-weight:600}
+header h1{margin:12px 0 6px;font-size:30px;font-weight:700}
+header .sub{color:#c9cede;font-size:14.5px;max-width:520px;margin:8px auto 0}
+header .code{display:inline-block;margin-top:18px;background:rgba(217,176,112,.16);
+border:1px solid var(--gold);color:var(--gold2);padding:7px 18px;border-radius:30px;
+font-weight:600;letter-spacing:.12em}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:-30px 0 30px;
+position:relative;z-index:2}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 12px;
+text-align:center;box-shadow:0 6px 22px rgba(26,34,56,.07)}
+.kpi-num{font-size:26px;font-weight:700;color:var(--ink)}
+.kpi-label{font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;
+padding:24px 22px 26px;margin:0 0 20px;box-shadow:0 3px 14px rgba(26,34,56,.04)}
+h2{font-size:18px;margin:0 0 4px;display:flex;align-items:center;justify-content:space-between;gap:9px}
+.lead{color:var(--mut);font-size:13.5px;margin:0 0 18px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{padding:9px 8px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+td.qty{color:var(--mut);font-size:13px;white-space:nowrap}
+tr.cat td{background:#fbf6ec;border-bottom:1px solid var(--gold2)}
+.pill{display:inline-block;background:#eef3ef;color:var(--green);font-size:11.5px;font-weight:600;
+padding:3px 10px;border-radius:20px;letter-spacing:.04em}
+.sub-total td{border-top:2px solid var(--ink);border-bottom:none;padding-top:12px;font-weight:700}
+.box{border:1px dashed var(--gold2);border-radius:10px;height:38px;margin-bottom:10px;background:#fbf6ec}
+.note{background:#fbf6ec;border:1px solid var(--gold2);border-radius:10px;padding:15px 17px;
+font-size:13px;color:#5a4a2c}
+.note b{color:var(--gold)}
+.grand{background:linear-gradient(135deg,#1a2238,#2b3556);color:#fff;border:none}
+.grand h2,.grand .kpi-num{color:#fff}
+.grand .amt{font-size:34px;font-weight:700;color:var(--gold2)}
+.foot{text-align:center;color:var(--mut);font-size:12.5px;margin-top:26px}
+@media(max-width:560px){.kpis{grid-template-columns:1fr 1fr}header h1{font-size:24px}}
+</style></head><body>
+<header><div class="eyebrow">Longinow Household</div>
+<h1>Weekly Grocery List</h1>
+<div class="sub">The usual staples, already sorted by store. Add anything I've missed
+in the space at the bottom, then off you go.</div>
+<div class="code">Saturday, August 8, 2026</div></header>
+<div class="wrap"><div class="kpis">
+<div class="kpi"><div class="kpi-num">21</div><div class="kpi-label">Items</div></div>
+<div class="kpi"><div class="kpi-num">2</div><div class="kpi-label">Stores</div></div>
+<div class="kpi"><div class="kpi-num">$136.50</div><div class="kpi-label">Est. total</div></div>
+</div><section><h2>Walmart<span class="pill">20 items</span></h2><p class="lead">Estimated $125.50</p><table><tr><th>Item</th><th>Qty</th><th style="text-align:right">Est. cost</th></tr><tr class="cat"><td colspan="3"><span class="pill">Breakfast</span></td></tr><tr><td>Greek yogurt</td><td class="qty">2</td><td class="num">$11</td></tr><tr><td>Eggs</td><td class="qty">1</td><td class="num">$4.50</td></tr><tr><td>Cereal</td><td class="qty">1</td><td class="num">$5</td></tr><tr class="cat"><td colspan="3"><span class="pill">Lunch</span></td></tr><tr><td>Uncrustables</td><td class="qty">2 boxes</td><td class="num">$4</td></tr><tr><td>Goodles</td><td class="qty">1</td><td class="num">$14</td></tr><tr class="cat"><td colspan="3"><span class="pill">Dinner</span></td></tr><tr><td>Rotisserie chicken</td><td class="qty">1</td><td class="num">$7</td></tr><tr><td>Ground beef</td><td class="qty">1+</td><td class="num">$5.50</td></tr><tr class="cat"><td colspan="3"><span class="pill">Snacks</span></td></tr><tr><td>Chips</td><td class="qty">1</td><td class="num">$12</td></tr><tr><td>Peanut butter pretzels</td><td class="qty">1</td><td class="num">$4</td></tr><tr><td>Kid snack (placeholder)</td><td class="qty">1</td><td class="num">$5</td></tr><tr class="cat"><td colspan="3"><span class="pill">Fruits &amp; Vegetables</span></td></tr><tr><td>Broccoli</td><td class="qty">1</td><td class="num">$2</td></tr><tr><td>Spinach</td><td class="qty">1</td><td class="num">$3</td></tr><tr><td>Bananas</td><td class="qty">1</td><td class="num">$1.50</td></tr><tr><td>Apples</td><td class="qty">1</td><td class="num">$3</td></tr><tr><td>Strawberries</td><td class="qty">1</td><td class="num">$6</td></tr><tr><td>Blueberries</td><td class="qty">1</td><td class="num">$6</td></tr><tr class="cat"><td colspan="3"><span class="pill">Drinks</span></td></tr><tr><td>Coke Zero</td><td class="qty">1 pack</td><td class="num">$15</td></tr><tr><td>Sparkling water</td><td class="qty">1</td><td class="num">$4</td></tr><tr class="cat"><td colspan="3"><span class="pill">General</span></td></tr><tr><td>Milk</td><td class="qty">2 gallons</td><td class="num">$9</td></tr><tr><td>Honey</td><td class="qty">1</td><td class="num">$4</td></tr><tr class="sub-total"><td>Walmart subtotal</td><td></td><td class="num">$125.50</td></tr></table></section><section><h2>Costco<span class="pill">1 items</span></h2><p class="lead">Estimated $11</p><table><tr><th>Item</th><th>Qty</th><th style="text-align:right">Est. cost</th></tr><tr class="cat"><td colspan="3"><span class="pill">Snacks</span></td></tr><tr><td>Chobani Greek yogurt cups</td><td class="qty">1</td><td class="num">$11</td></tr><tr class="sub-total"><td>Costco subtotal</td><td></td><td class="num">$11</td></tr></table></section><section><h2>Miriam's additions</h2><p class="lead">Anything you know we need that isn't above.</p><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div></section><section class="grand"><h2>Estimated total</h2><div class="amt">$136.50</div></section><div class="note"><b>Note:</b> costs are what each item last cost us, so the total is a guide, not gospel. Trader Joe's is retired — everything is Walmart or Costco now.</div><div class="foot">Prepared by Alfred · Longinow household</div></div></body></html>
