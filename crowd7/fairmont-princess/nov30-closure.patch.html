@@ -1,0 +1,174 @@
+<!--
+  Fairmont — Nov 30 2026 Village Closure (C7-214 / CrowdView request 108)
+  Built by Crowdly, 2026-09-22. Source: Teresa Thompson email, thread 1a0c5c7d40313643,
+  2026-09-21. Extends the page's EXISTING mechanisms rather than adding new ones:
+    - Calendar per-date treatment: same pattern as VALUE/VIP_VALUE tag() (line ~911-951
+      of christmas-at-the-princess-2026.content.html) — day-of-month + currentMonth().
+    - Date-select popup: same pattern as the post-date promo (#capOvPromo / capFirePromo,
+      line ~998-1066) and the global day-click delegate (line ~1780).
+    - Checkout gate: same VISUAL pattern as .cap-native-gated (line ~1685/1726) — hides/
+      disables the submit row until a condition is met.
+
+  ⚠️ NOT YET LIVE. This is a drop-in patch for Mini Man to apply to BOTH
+  preview/ and production/ christmas-at-the-princess-2026.content.html, in this order:
+    1. Paste the CSS block into the existing <style> (near the other .wbx-calendar rules,
+       ~line 330).
+    2. Paste the JS IIFE into the existing <script>, after the VALUE-DATE HIGHLIGHT IIFE
+       (~line 951) — it is self-contained and does not touch that block.
+    3. Paste the modal markup (#capOvClosure) as a sibling of #capOvPromo in the modal
+       markup section.
+    4. BEFORE pasting: confirm in TicketSpice admin whether a native required-checkbox/
+       terms field exists that can be scoped to a single date — if yes, use THAT instead
+       of the JS gate below (native > JS fake-required field, per the build brief). Only
+       fall back to the JS gate if TS has no such native option.
+-->
+
+<!-- ============ 1) CSS — paste into the existing <style> block ============ -->
+<style>
+/* Nov 30 2026 Village-closure calendar treatment (C7-214) */
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-closure-date {
+  background: #8a3b2e !important;
+  color: #fff !important;
+  position: relative !important;
+}
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-closure-date:hover {
+  background: #6f2f24 !important;
+  color: #fff !important;
+}
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-closure-date::after {
+  content: 'Private Event' !important;
+  display: block !important;
+  font-size: 8px !important;
+  letter-spacing: .02em !important;
+  line-height: 1.1 !important;
+  color: #f5e2de !important;
+  opacity: 1 !important;
+}
+/* selected-state must still read clearly */
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-closure-date.selected,
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-closure-date.day-selected,
+.ticket-block .datePicker .wbx-calendar .row.week .day.cap-closure-date.active {
+  background: #671416 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 2px #c9a24b inset !important;
+}
+
+/* Nov 30 checkout gate (JS fallback only — see native-field check above) */
+#capNov30Gate {
+  display: none;
+  margin: 16px 0;
+  padding: 14px 16px;
+  background: #fbf1ee;
+  border: 1px solid #d8b9b0;
+  border-radius: 8px;
+  font-family: inherit;
+}
+html[data-cap-nov30="1"] #capNov30Gate { display: block; }
+#capNov30Gate label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 14px; color: #3a2a2a; }
+#capNov30Gate input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; flex: none; }
+body.cap-nov30-unacked .submit-row,
+body.cap-nov30-unacked button[type="submit"] { opacity: .45 !important; pointer-events: none !important; }
+</style>
+
+<!-- ============ 2) JS — paste after the VALUE-DATE HIGHLIGHT IIFE ============ -->
+<script>
+(function(){
+  // Nov 30 2026 is a fixed single date (not a recurring rule) — hardcode, do not
+  // generalize into a date-list like VALUE/VIP_VALUE above; this is a one-off closure.
+  var CLOSURE_MONTH = 11, CLOSURE_DAY = 30; // November 30
+  var MON = {january:1,february:2,march:3,april:4,may:5,june:6,july:7,august:8,september:9,october:10,november:11,december:12};
+  function currentMonth(cal){
+    var lbl = cal.querySelector('.month-label') || cal.querySelector('.month-display');
+    var t = ((lbl && lbl.textContent) || '').toLowerCase();
+    for (var name in MON) { if (t.indexOf(name) !== -1) return MON[name]; }
+    return 0;
+  }
+  function tagClosureDate(){
+    var cal = document.querySelector('.ticket-block .datePicker .wbx-calendar');
+    if (!cal) return;
+    var isNov = currentMonth(cal) === CLOSURE_MONTH;
+    cal.querySelectorAll('.row.week .day').forEach(function(d){
+      var m = (d.textContent || '').match(/\d+/);
+      var n = m ? parseInt(m[0], 10) : 0;
+      if (isNov && n === CLOSURE_DAY && !d.classList.contains('different-month')) {
+        d.classList.add('cap-closure-date');
+      } else {
+        d.classList.remove('cap-closure-date');
+      }
+    });
+  }
+  var moTag = new MutationObserver(function(){ tagClosureDate(); });
+  moTag.observe(document.body, { childList: true, subtree: true });
+  if (document.readyState !== 'loading') tagClosureDate();
+  else document.addEventListener('DOMContentLoaded', tagClosureDate);
+
+  // Fire the closure popup the moment the guest clicks Nov 30 in the calendar.
+  // Same delegate pattern as the existing native-date click listener (reveal()).
+  var _closureFired = false;
+  function fireClosurePopup(){
+    var m = document.getElementById('capOvClosure');
+    if (!m) return;
+    document.documentElement.setAttribute('data-cap-nov30', '1');
+    document.body.classList.add('cap-nov30-unacked');
+    if (_closureFired) return; // don't re-pop on every re-render, but keep the gate active
+    _closureFired = true;
+    setTimeout(function(){ if (window.capShow) capShow('capOvClosure'); }, 250);
+  }
+  function clearClosureState(){
+    document.documentElement.removeAttribute('data-cap-nov30');
+    document.body.classList.remove('cap-nov30-unacked');
+    _closureFired = false;
+  }
+  document.addEventListener('click', function(e){
+    var day = e.target.closest && e.target.closest('.wbx-calendar .row.week .day.enabled');
+    if (!day) return;
+    var isClosure = day.classList.contains('cap-closure-date');
+    if (isClosure) fireClosurePopup();
+    else clearClosureState(); // guest picked a different date after previously picking Nov 30
+  });
+
+  // Required-acknowledgment checkbox (JS fallback — only ship this if TS has no native
+  // per-date required-checkbox field; see header note). Un-gates the submit row once checked.
+  document.addEventListener('change', function(e){
+    if (e.target && e.target.id === 'capNov30Ack') {
+      document.body.classList.toggle('cap-nov30-unacked', !e.target.checked);
+    }
+  });
+  window.capCloseClosurePopup = function(){
+    if (window.capCloseAll) capCloseAll();
+  };
+})();
+</script>
+
+<!-- ============ 3) Modal markup — sibling of #capOvPromo ============ -->
+<div class="cap-ov" id="capOvClosure">
+  <div class="cap-modal" role="dialog" aria-modal="true" aria-labelledby="capClosureTitle">
+    <button class="x" type="button" onclick="capCloseClosurePopup()" aria-label="Close">&times;</button>
+    <p class="cap-promo-eye">Please note before you book</p>
+    <h3 id="capClosureTitle">November 30 — Village Closed for a Private Event</h3>
+    <p class="cap-promo-body">
+      The Village will be closed for a private event on November 30. The following attractions
+      will <strong>not</strong> be available that evening:
+    </p>
+    <ul class="cap-closure-list">
+      <li>Chairlift Ferris Wheel</li>
+      <li>Snow Mountain Sledding</li>
+      <li>Nordic 9 | Alpine Adventure Mini Golf</li>
+    </ul>
+    <p class="cap-promo-body">
+      Ticket pricing has been reduced to reflect the limited attraction availability.
+    </p>
+    <button class="mbtn gold" type="button" onclick="capCloseClosurePopup()">I understand — continue</button>
+  </div>
+</div>
+
+<!-- Required-acknowledgment checkbox — place near the submit/registrants section,
+     ONLY if step 4's native-field check comes back negative. -->
+<div id="capNov30Gate">
+  <label for="capNov30Ack">
+    <input type="checkbox" id="capNov30Ack" name="capNov30Ack" required>
+    <span>I have read and understand that the Village will be closed for a private event on
+      November 30, and that the Chairlift Ferris Wheel, Snow Mountain Sledding, and Nordic 9 |
+      Alpine Adventure Mini Golf will not be available.</span>
+  </label>
+</div>
