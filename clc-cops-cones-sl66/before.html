@@ -1,0 +1,214 @@
+<!--
+  PAGE: Cops & Cones 2026 (CLC) — page-guts for the Webflow Hybrid loader.
+  ENV: production  (loaded by the LIVE CLC custom domain only — see webflow-embed-loader.html)
+  Built from the 2025 page structure (_source/clc-export/cops-cones.html) via the
+  component library (../../../_components/). Brand color resolves automatically from
+  the live CLC site's :root vars — nothing brand-colored is set here.
+
+  WHAT THIS PAGE IS: a PRE-event promo for Cops & Cones 2026 — a family event pairing
+  local law-enforcement agencies with the community over ice cream. August 30, 2026,
+  1–4 PM at Turtle Bay (relocated from The Park this year).
+
+  IMAGES: self-hosted in this repo, served straight from raw.githubusercontent.com — NOT
+  jsDelivr (deliberate: jsDelivr's @main edge cache is ~7 days and lags updates; raw GitHub
+  reflects a push within seconds–minutes). Absolute URLs required — the guts are injected
+  into the Webflow domain so relative paths would break:
+  https://raw.githubusercontent.com/Mat-Longinow/arch/main/clc/pages/images/<file>
+
+  Sponsor grid pared to 2026-confirmed sponsors per Sarah 7/7/26 weekly: 32 Below +
+  BBSI (more to be added as they confirm). Partner grid (RPD/APD/SCSO/DA) carried over
+  unchanged from 2025, confirmed still accurate. Recap photo grid is omitted (commented)
+  — it's a POST-event recap section.
+-->
+
+<!-- 1. HERO -->
+<div class="services-main">
+  <div class="main-image _4 cops-cones">
+    <div class="black-overlay no-padding">
+      <div class="space-block _2"></div>
+      <div class="page-padding">
+        <div class="container-large">
+          <div class="padding-vertical no-padding">
+            <div class="who-div">
+              <div class="div-block-19">
+                <h1 class="heading-6">Cops &amp; Cones</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. DOUBLE-PANE INTRO (text-left / image-right) -->
+<div class="services-holder crt-section-2">
+  <div class="page-padding">
+    <div class="container-large">
+      <div class="vertical-page">
+        <div class="careers-text _2">
+          <div class="div-block-38 white _3">
+            <div class="columns _2 whi w-row">
+              <div class="image-holder _2 white w-col w-col-6">
+                <div class="full-wrap">
+                  <h3 class="heading-25">Cops &amp; Cones 2026</h3>
+                  <div class="yellow-div left-side"></div>
+                  <p class="paragraph-12 crt-info-blurb"><strong>Cops &amp; Cones is back for 2026!<br><br></strong>We’re excited to partner with local law enforcement agencies to bring this special event to our community! Cops &amp; Cones is all about creating a safe, welcoming space where families can connect with the officers who serve them every day, all while enjoying a sweet treat together.<br><br>Dairy-free options available in limited quantities.<strong><br><br>We can’t wait to see you there!<br><br>RSVP on our Facebook event: </strong>
+                    <a href="https://www.facebook.com/events/1305909101520052/" target="_blank" rel="noopener"><strong>Cops &amp; Cones 2026</strong></a><br>
+                  </p>
+                </div>
+              </div>
+              <div class="column _2 white w-col w-col-6">
+                <div class="div-block-39 _2"><img src="https://raw.githubusercontent.com/Mat-Longinow/arch/main/clc/pages/images/cops-cones-2026-hero.png" loading="lazy" alt="Cops &amp; Cones 2026" class="image-6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. WHEN-&-WHERE + MAP -->
+<div class="map cfr-what-to-expect">
+  <div class="page-padding cfr-what-to-expect">
+    <div class="container-large">
+      <div class="vertical-page">
+        <div class="columns-2 w-row">
+          <div class="column-8 w-col w-col-6 w-col-stack">
+            <div class="map-em">
+              <div class="html-embed w-embed w-iframe"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3029.7626243354257!2d-122.37895872334461!3d40.59099477141207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54d2ecd7de07d813%3A0x3a1b543b566b69cf!2sTurtle%20Bay%20Exploration%20Park!5e0!3m2!1sen!2sus!4v1782765268740!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+            </div>
+          </div>
+          <div class="column-2 cfr-what-to-expect w-col w-col-6 w-col-stack">
+            <div class="map-text _2 cfr-what-to-expect less-padding-top">
+              <h3 class="map-text cfr-what-to-expect less-padding-top">When &amp; Where</h3>
+              <div class="yellow-div"></div>
+              <div class="map-body"><span><strong>When</strong>: August 30, 2026 | 1 – 4 PM<br><br><strong>Where</strong>: Turtle Bay </span><br></div>
+            </div>
+            <div class="map-text _2 cfr-what-to-expect padding-top"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. RECAP PHOTO GRID — OMITTED (post-event recap; re-enable after the 2026 event)
+<section class="team-circles cac-sponsors recap-pics">
+  <div class="container-7">
+    <h2 class="centered-heading cops-cones">Thanks For A &quot;Sweet&quot; Time</h2>
+    <div class="yellow-div-copy"></div>
+    <div class="team-grid recap-pics">
+      <div class="team-card"><img src="#" alt="" class="team-member-image"></div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- 4.5 SPONSOR GUIDE CTA — links the Sponsor Guide PDF Sarah sent 7/7/26. Self-hosted
+     alongside this page's other assets (raw.githubusercontent.com, no jsDelivr — see the
+     "No CDN cache" note above). Button class ("button white bigger w-inline-block" +
+     "h4-type team") is the same CLC-native download-button pattern already live on
+     childrenslegacycenter.org/donor-resources — inherits CLC brand styling automatically. -->
+<div class="map cfr-what-to-expect">
+  <div class="page-padding cfr-what-to-expect">
+    <div class="container-large">
+      <div class="vertical-page">
+        <div class="map-text _2 cfr-what-to-expect less-padding-top" style="text-align:center;">
+          <h3 class="map-text cfr-what-to-expect less-padding-top">Interested in Sponsoring?</h3>
+          <div class="yellow-div" style="margin-left:auto;margin-right:auto;"></div>
+          <div class="map-body">Download our Sponsor Guide for the full lineup of 2026 sponsorship levels and benefits.</div>
+          <br>
+          <a href="https://raw.githubusercontent.com/Mat-Longinow/arch/main/clc/pages/documents/compressed_Cops-and-Cones-Sponsor-Guide---2026---7.7.26.pdf" target="_blank" rel="noopener" class="button white bigger w-inline-block">
+            <h4 class="h4-type team">Download Sponsor Guide</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. SPONSORS GRID — Git-backed JSON-CMS (cms/sponsors.json). Renders .team-card images,
+     env-gated: preview shows ALL items, production shows preview!==true. Edit the roster in
+     cms/sponsors.json + drop logos in cms/assets/ — no markup changes needed. See README.
+     2026 confirmed sponsors (per Sarah 7/7/26): 32 Below + BBSI — more to be added as they
+     confirm. -->
+<section class="team-circles cac-sponsors">
+  <div class="container-7">
+    <h2 class="centered-heading cops-cones">Thank You to Our 2026 Sponsors!</h2>
+    <div class="yellow-div-copy"></div>
+    <div id="lc-cops-sponsors" role="list" class="team-grid w-dyn-items" data-env="production"></div>
+    <script>
+    (function () {
+      var CMS_JSON   = "https://raw.githubusercontent.com/Mat-Longinow/arch/main/clc/pages/cops-cones-2026/cms/sponsors.json";
+      var ASSET_BASE = "https://raw.githubusercontent.com/Mat-Longinow/arch/main/clc/pages/cops-cones-2026/cms/assets/";
+      var container  = document.getElementById("lc-cops-sponsors");
+      if (!container) return;
+      var ENV = container.getAttribute("data-env") || "production";
+      function resolveImage(img) { return !img ? "" : (/^https?:\/\//.test(img) ? img : ASSET_BASE + img); }
+      function render(items) {
+        var visible = items.filter(function (it) { return ENV === "preview" ? true : it.preview !== true; });
+        container.innerHTML = "";
+        visible.forEach(function (it) {
+          var card = document.createElement("div");
+          card.setAttribute("role", "listitem");
+          card.className = "team-card";
+          var img = document.createElement("img");
+          img.loading = "lazy"; img.className = "team-member-image";
+          img.alt = it.name || ""; img.src = resolveImage(it.image);
+          card.appendChild(img); container.appendChild(card);
+        });
+      }
+      fetch(CMS_JSON, { cache: "no-store" })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { render((data && data.items) || []); })
+        .catch(function (e) { console.error("LC Cops & Cones sponsors CMS load failed:", e); });
+    })();
+    </script>
+  </div>
+</section>
+
+<!-- 6. PARTNERS GRID (law-enforcement agencies) — Git-backed JSON-CMS (cms/partners.json).
+     Same render pattern as sponsors. Edit cms/partners.json + cms/assets/ to change agencies. -->
+<section class="team-circles">
+  <div class="container-7">
+    <h2 class="centered-heading cops-cones">Thank You to Our 2026 Partners!</h2>
+    <div class="yellow-div-copy"></div>
+    <div id="lc-cops-partners" role="list" class="team-grid w-dyn-items" data-env="production"></div>
+    <script>
+    (function () {
+      var CMS_JSON   = "https://raw.githubusercontent.com/Mat-Longinow/arch/main/clc/pages/cops-cones-2026/cms/partners.json";
+      var ASSET_BASE = "https://raw.githubusercontent.com/Mat-Longinow/arch/main/clc/pages/cops-cones-2026/cms/assets/";
+      var container  = document.getElementById("lc-cops-partners");
+      if (!container) return;
+      var ENV = container.getAttribute("data-env") || "production";
+      function resolveImage(img) { return !img ? "" : (/^https?:\/\//.test(img) ? img : ASSET_BASE + img); }
+      function render(items) {
+        var visible = items.filter(function (it) { return ENV === "preview" ? true : it.preview !== true; });
+        container.innerHTML = "";
+        visible.forEach(function (it) {
+          var card = document.createElement("div");
+          card.setAttribute("role", "listitem");
+          card.className = "team-card";
+          var img = document.createElement("img");
+          img.loading = "lazy"; img.className = "team-member-image";
+          img.alt = it.name || ""; img.src = resolveImage(it.image);
+          card.appendChild(img); container.appendChild(card);
+        });
+      }
+      fetch(CMS_JSON, { cache: "no-store" })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { render((data && data.items) || []); })
+        .catch(function (e) { console.error("LC Cops & Cones partners CMS load failed:", e); });
+    })();
+    </script>
+  </div>
+</section>
+
+<!-- ⛔ NEWSLETTER SECTION — DELIBERATELY OMITTED. STANDING RULE (Mat, 2026-06-29):
+     NEVER include the bottom "Sign Up for OUR Newsletter" section on this page. The
+     Webflow newsletter form does not re-bind when injected after page load (degrades to
+     a bare GET), AND Mat does not want it here regardless. Do not re-add it. Repo-wide
+     rule mirrored in ../../../HYBRID-CMS.md and this page's README.md. -->
+
