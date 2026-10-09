@@ -1,0 +1,17 @@
+{
+  "client_id": "https://raw.githubusercontent.com/Mat-Longinow/longinow-assets/master/dq761-canva-probe/client.json",
+  "client_name": "Dynamiq",
+  "client_uri": "https://dynamiqai.io",
+  "redirect_uris": [
+    "https://api.dynamiqai.io/v1/integrations/canva/callback",
+    "https://brain-iq-server.fly.dev/v1/integrations/canva/callback"
+  ],
+  "grant_types": [
+    "authorization_code",
+    "refresh_token"
+  ],
+  "response_types": [
+    "code"
+  ],
+  "token_endpoint_auth_method": "none"
+}
